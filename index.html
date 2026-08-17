@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analisis Pertumbuhan Finansial - Template SupermanPPT Style</title>
+    <title>Analisis Pertumbuhan Finansial - Akatsuki Shinobi Edition</title>
     
     <!-- Reveal.js -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/white.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,399 +19,380 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+    <!-- Google Fonts: Shojumaru (Shinobi/Ninja Font) & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shojumaru&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Cinzel+Decorative:wght@700;900&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-dark-mahogany: #1C120C;
-            --bg-warm-brown: #2D1E15;
-            --accent-gold: #C59B27;
-            --accent-light-gold: #E5C365;
-            --card-cream: #FFFDF9;
-            --text-dark: #2B1B12;
+            --akatsuki-red: #DC2626;
+            --akatsuki-dark-red: #7F1D1D;
+            --akatsuki-black: #090505;
+            --akatsuki-gold: #F59E0B;
         }
 
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark-mahogany); }
-        .reveal .slides { text-align: left; }
-        .reveal h1, .reveal h2, .reveal h3, .reveal h4 { font-family: 'Playfair Display', serif; text-transform: uppercase; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--akatsuki-black); 
+            color: #FFFFFF;
+        }
 
-        /* SupermanPPT Style Cards */
-        .superman-card {
-            background-color: var(--card-cream);
-            border: 2px solid #E8D9C5;
-            border-radius: 20px;
+        .reveal .slides { text-align: left; }
+        
+        .font-shinobi {
+            font-family: 'Shojumaru', cursive, 'Cinzel Decorative', serif;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(220, 38, 38, 0.8), 0 0 30px rgba(0, 0, 0, 0.9);
+        }
+
+        /* Akatsuki Crimson Glass Cards */
+        .akatsuki-card {
+            background: rgba(15, 5, 5, 0.82);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(220, 38, 38, 0.4);
+            border-radius: 18px;
             padding: 24px;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+            box-shadow: 0 10px 35px rgba(220, 38, 38, 0.25), inset 0 0 15px rgba(220, 38, 38, 0.1);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .superman-card:hover {
+
+        .akatsuki-card:hover {
             transform: translateY(-8px) scale(1.02);
-            border-color: var(--accent-gold);
-            box-shadow: 0 20px 45px rgba(197, 155, 39, 0.25);
+            border-color: #EF4444;
+            box-shadow: 0 15px 45px rgba(239, 68, 68, 0.45);
         }
 
-        /* Numbered Badges SupermanPPT Style */
-        .number-badge {
-            background: linear-gradient(135deg, #C59B27 0%, #8A6812 100%);
-            color: white;
-            width: 44px;
-            height: 44px;
+        /* Sharingan Glowing Badge */
+        .sharingan-badge {
+            background: radial-gradient(circle, #EF4444 0%, #7F1D1D 70%, #000000 100%);
+            border: 2px solid #F59E0B;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.8);
+        }
+
+        /* Header Ribbon Akatsuki */
+        .akatsuki-ribbon {
+            background: linear-gradient(90deg, #450A0A 0%, #7F1D1D 50%, #180505 100%);
+            border-bottom: 3px solid #EF4444;
+            padding: 10px 20px;
             border-radius: 12px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(197, 155, 39, 0.4);
-        }
-
-        /* Top Header Ribbon */
-        .header-ribbon {
-            background: linear-gradient(90deg, #2D1E15 0%, #442D1F 100%);
-            border-bottom: 3px solid var(--accent-gold);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
             justify-content: space-between;
+            box-shadow: 0 5px 20px rgba(220, 38, 38, 0.4);
         }
 
-        /* Tables SupermanPPT Style */
-        .superman-table {
+        /* Tables Akatsuki Style */
+        .akatsuki-table {
             width: 100%; border-collapse: separate; border-spacing: 0;
-            background: #FFFDF9; border-radius: 14px; overflow: hidden;
-            font-size: 0.62em; border: 1px solid #E8D9C5;
+            background: rgba(20, 8, 8, 0.9); border-radius: 12px; overflow: hidden;
+            font-size: 0.62em; border: 1px solid rgba(220, 38, 38, 0.4);
         }
-        .superman-table th { background: #2D1E15; color: var(--accent-light-gold); padding: 10px; text-align: center; font-weight: 700; }
-        .superman-table td { padding: 8px 10px; text-align: center; border-bottom: 1px solid #F0E6D8; color: #2D1E15; }
-        .superman-table tr:nth-child(even) { background: #FBF7F0; }
-        .superman-table tr:hover td { background: #F5EAD6; }
+        .akatsuki-table th { background: #450A0A; color: #F59E0B; padding: 10px; text-align: center; font-family: 'Shojumaru', cursive; font-size: 1.1em; }
+        .akatsuki-table td { padding: 8px 10px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.08); color: #F3F4F6; }
+        .akatsuki-table tr:nth-child(even) { background: rgba(40, 10, 10, 0.5); }
+        .akatsuki-table tr:hover td { background: rgba(220, 38, 38, 0.25); }
 
-        .up-badge { color: #15803d; font-weight: 800; font-size: 0.85em; }
-        .down-badge { color: #b91c1c; font-weight: 800; font-size: 0.85em; }
+        .up-val { color: #34D399; font-weight: bold; }
+        .down-val { color: #F87171; font-weight: bold; }
 
-        /* Animation Keyframes */
-        @keyframes expandLogo {
-            0% { transform: scale(0.2) rotate(-180deg); opacity: 0; }
-            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        /* Animation */
+        @keyframes pulseCloud {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(220, 38, 38, 0.6)); }
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 35px rgba(239, 68, 68, 0.9)); }
         }
-        .animate-logo { animation: expandLogo 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        .animate-cloud { animation: pulseCloud 3s infinite ease-in-out; }
     </style>
 </head>
 <body>
     <div class="reveal">
         <div class="slides">
             
-            <!-- SLIDE 1: HERO INTRO (SupermanPPT Exact Reproduction) -->
-            <section data-auto-animate data-background-color="#1C120C">
-                <div class="flex flex-col items-center justify-center text-center h-full pt-10 relative">
+            <!-- SLIDE 1: INTRO / HERO (Susanoo & Red Moon Video) -->
+            <section data-auto-animate data-background-image="./assets/image1.jpeg" data-background-opacity="0.5">
+                <div class="flex flex-col items-center justify-center text-center h-full pt-8 relative">
+                    <!-- Background Video Loop dari PPTX -->
+                    <video src="./assets/VAG4lJfUufs.mp4" autoplay loop muted class="absolute inset-0 w-full h-full object-cover opacity-30 -z-10"></video>
                     
-                    <!-- Circular Expanding Logo Emblem -->
-                    <div data-id="logo-container" class="w-36 h-36 rounded-full bg-gradient-to-tr from-[#8A6812] via-[#C59B27] to-[#F3E5AB] p-1.5 shadow-[0_0_50px_rgba(197,155,39,0.5)] mb-6 animate-logo">
-                        <div class="w-full h-full bg-[#2D1E15] rounded-full flex items-center justify-center border-2 border-[#E5C365]">
-                            <img data-id="logo-unpam" src="./assets/unpam.png" class="w-24 h-24 object-contain drop-shadow-xl" alt="UNPAM Logo">
-                        </div>
+                    <div data-id="logo-container" class="w-32 h-32 rounded-full sharingan-badge flex items-center justify-center mb-4 animate-cloud">
+                        <img data-id="logo-unpam" src="./assets/unpam.png" class="w-20 h-20 object-contain" alt="UNPAM Logo">
                     </div>
 
-                    <!-- Main Title -->
-                    <h1 data-id="title-main" class="text-4xl md:text-6xl font-extrabold text-[#E5C365] tracking-wider mb-2 drop-shadow-md">
+                    <h1 data-id="title-main" class="text-3xl md:text-5xl font-shinobi text-red-500 mb-2 tracking-widest">
                         ANALISIS PERTUMBUHAN FINANSIAL
                     </h1>
 
-                    <p data-id="subtitle" class="text-lg md:text-xl text-gray-300 font-medium max-w-3xl mb-8 bg-[#2D1E15]/80 px-6 py-2 rounded-full border border-[#C59B27]/40 shadow-inner">
-                        Tinjauan Kinerja Komparatif: PT Mayora Indah Tbk & PT Indofood CBP Sukses Makmur Tbk (2020 - 2025)
+                    <p data-id="subtitle" class="text-sm md:text-base text-amber-400 font-semibold max-w-3xl mb-6 bg-black/80 px-6 py-2 rounded-full border border-red-600/50 shadow-2xl">
+                        Tinjauan Kinerja Komparatif: PT Mayora Indah Tbk & PT Indofood CBP (2020 - 2025)
                     </p>
 
-                    <!-- Presenter Metadata Footer (SupermanPPT Style) -->
-                    <div data-id="presenter-box" class="grid grid-cols-3 gap-6 w-full max-w-4xl mt-6 text-left">
-                        <div class="bg-[#2D1E15] p-4 rounded-xl border border-[#C59B27]/30">
-                            <p class="text-xs text-[#C59B27] font-bold uppercase tracking-wider mb-1"><i class="fa-solid fa-graduation-cap mr-1"></i> Program Studi</p>
-                            <p class="text-sm font-semibold text-white">Manajemen - Semester 3</p>
-                            <p class="text-xs text-gray-400">UNPAM Kampus Serang</p>
+                    <!-- Presenter Box -->
+                    <div data-id="presenter-box" class="grid grid-cols-3 gap-4 w-full max-w-3xl text-left">
+                        <div class="akatsuki-card p-3">
+                            <p class="text-[10px] text-amber-400 font-bold uppercase"><i class="fa-solid fa-graduation-cap mr-1"></i> Program Studi</p>
+                            <p class="text-xs font-bold text-white">Manajemen - Semester 3</p>
+                            <p class="text-[10px] text-gray-400">UNPAM Kampus Serang</p>
                         </div>
-                        <div class="bg-[#2D1E15] p-4 rounded-xl border border-[#C59B27]/30 text-center">
-                            <p class="text-xs text-[#C59B27] font-bold uppercase tracking-wider mb-1"><i class="fa-solid fa-user mr-1"></i> Penyusun / NIM</p>
-                            <p class="text-base font-extrabold text-white">Aziz Maulana</p>
-                            <span class="bg-[#C59B27] text-black text-xs font-bold px-2 py-0.5 rounded">NIM: 221011400000</span>
+                        <div class="akatsuki-card p-3 text-center border-red-500">
+                            <p class="text-[10px] text-amber-400 font-bold uppercase"><i class="fa-solid fa-user-ninja mr-1"></i> Penyusun / NIM</p>
+                            <p class="text-sm font-extrabold text-red-400">Aziz Maulana</p>
+                            <span class="bg-red-700 text-white text-[10px] font-bold px-2 py-0.5 rounded">NIM: 221011400000</span>
                         </div>
-                        <div class="bg-[#2D1E15] p-4 rounded-xl border border-[#C59B27]/30 text-right">
-                            <p class="text-xs text-[#C59B27] font-bold uppercase tracking-wider mb-1"><i class="fa-solid fa-book-bookmark mr-1"></i> Mata Kuliah</p>
-                            <p class="text-sm font-semibold text-white">Manajemen Keuangan</p>
-                            <p class="text-xs text-gray-400">Tugas Mandiri 1</p>
+                        <div class="akatsuki-card p-3 text-right">
+                            <p class="text-[10px] text-amber-400 font-bold uppercase"><i class="fa-solid fa-scroll mr-1"></i> Mata Kuliah</p>
+                            <p class="text-xs font-bold text-white">Manajemen Keuangan</p>
+                            <p class="text-[10px] text-gray-400">Tugas Mandiri 1</p>
                         </div>
                     </div>
 
-                    <p class="mt-8 text-xs text-[#C59B27] animate-pulse"><i class="fa-solid fa-chevron-right mr-1"></i> Tekan Spasi / Panah Kanan Untuk Masuk Daftar Isi</p>
+                    <p class="mt-6 text-xs text-red-400 animate-pulse font-bold"><i class="fa-solid fa-[#C59B27] fa-angles-right mr-1"></i> Tekan Spasi Untuk Membuka Segel Akatsuki</p>
                 </div>
             </section>
 
-            <!-- SLIDE 2: TABLE OF CONTENT (SupermanPPT Grid Morphing) -->
-            <section data-auto-animate data-background-color="#1C120C">
-                <div class="header-ribbon mb-8">
+            <!-- SLIDE 2: ANGGOTA KELOMPOK / SHINOBI LINEUP -->
+            <section data-auto-animate data-background-image="./assets/image21.jpeg">
+                <div class="akatsuki-ribbon mb-6">
                     <div class="flex items-center space-x-3">
-                        <img data-id="logo-unpam" src="./assets/unpam.png" class="w-8 h-8" alt="UNPAM">
-                        <h2 data-id="title-main" class="text-xl font-bold text-[#E5C365] m-0">TABLE OF CONTENT</h2>
+                        <img data-id="logo-unpam" src="./assets/unpam.png" class="w-7 h-7" alt="UNPAM">
+                        <h2 data-id="title-main" class="text-lg font-shinobi text-red-500 m-0">TIM ANALIS AKATSUKI</h2>
                     </div>
-                    <span class="text-xs text-gray-400">◆ AGENDA PRESENTASI ◆</span>
+                    <span class="text-xs text-amber-400 font-bold">◆ ORGANISASI KELOMPOK ◆</span>
                 </div>
 
-                <div class="grid grid-cols-3 gap-6 mt-6">
-                    <div class="superman-card cursor-pointer group" data-id="card-bab1">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="number-badge">I</span>
-                            <i class="fa-solid fa-building text-2xl text-[#C59B27]"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-[#2D1E15]">BAB I</h3>
-                        <p class="text-xs text-gray-600 font-semibold mt-1">Profil Perusahaan Dianalisis (MYOR vs ICBP)</p>
+                <div class="grid grid-cols-6 gap-3 mt-4 text-center">
+                    <div class="akatsuki-card p-2 group hover:border-red-500">
+                        <img src="./assets/image24.png" class="h-32 mx-auto object-contain drop-shadow-[0_0_10px_rgba(220,38,38,0.8)]" alt="Pain">
+                        <h4 class="text-xs font-shinobi text-red-400 mt-2">AZIZ M.</h4>
+                        <span class="bg-red-900/80 text-white text-[9px] px-1.5 py-0.5 rounded block mt-1 font-bold">Ketua Tim</span>
                     </div>
 
-                    <div class="superman-card cursor-pointer group" data-id="card-bab2">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="number-badge">II</span>
-                            <i class="fa-solid fa-scale-balanced text-2xl text-[#C59B27]"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-[#2D1E15]">BAB II</h3>
-                        <p class="text-xs text-gray-600 font-semibold mt-1">Posisi Keuangan (Neraca 2020 - 2025)</p>
+                    <div class="akatsuki-card p-2 group hover:border-red-500">
+                        <img src="./assets/image23.png" class="h-32 mx-auto object-contain drop-shadow-[0_0_10px_rgba(220,38,38,0.8)]" alt="Itachi">
+                        <h4 class="text-xs font-shinobi text-amber-400 mt-2">DOSEN P.</h4>
+                        <span class="bg-amber-900/80 text-white text-[9px] px-1.5 py-0.5 rounded block mt-1 font-bold">Penguji</span>
                     </div>
 
-                    <div class="superman-card cursor-pointer group" data-id="card-bab3">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="number-badge">III</span>
-                            <i class="fa-solid fa-chart-line text-2xl text-[#C59B27]"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-[#2D1E15]">BAB III</h3>
-                        <p class="text-xs text-gray-600 font-semibold mt-1">Kinerja Laba Rugi (EBIT & EAT)</p>
+                    <div class="akatsuki-card p-2 group hover:border-red-500">
+                        <img src="./assets/image22.png" class="h-32 mx-auto object-contain drop-shadow-[0_0_10px_rgba(220,38,38,0.8)]" alt="Kisame">
+                        <h4 class="text-xs font-shinobi text-blue-400 mt-2">DOSEN P.</h4>
+                        <span class="bg-blue-900/80 text-white text-[9px] px-1.5 py-0.5 rounded block mt-1 font-bold">Pembimbing</span>
                     </div>
 
-                    <div class="superman-card cursor-pointer group" data-id="card-bab4">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="number-badge">IV</span>
-                            <i class="fa-solid fa-chart-pie text-2xl text-[#C59B27]"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-[#2D1E15]">BAB IV</h3>
-                        <p class="text-xs text-gray-600 font-semibold mt-1">Analisis Grafis & Tren Penjualan</p>
+                    <div class="akatsuki-card p-2 group hover:border-red-500">
+                        <img src="./assets/image25.png" class="h-32 mx-auto object-contain drop-shadow-[0_0_10px_rgba(220,38,38,0.8)]" alt="Sasori">
+                        <h4 class="text-xs font-shinobi text-purple-400 mt-2">RISET 1</h4>
+                        <span class="bg-purple-900/80 text-white text-[9px] px-1.5 py-0.5 rounded block mt-1 font-bold">Penanya</span>
                     </div>
 
-                    <div class="superman-card cursor-pointer group col-span-2" data-id="card-bab5">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="number-badge">V</span>
-                            <i class="fa-solid fa-award text-2xl text-[#C59B27]"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-[#2D1E15]">BAB V</h3>
-                        <p class="text-xs text-gray-600 font-semibold mt-1">Kesimpulan Pola Pertumbuhan & Rekomendasi</p>
+                    <div class="akatsuki-card p-2 group hover:border-red-500">
+                        <img src="./assets/image26.png" class="h-32 mx-auto object-contain drop-shadow-[0_0_10px_rgba(220,38,38,0.8)]" alt="Kakuzu">
+                        <h4 class="text-xs font-shinobi text-emerald-400 mt-2">RISET 2</h4>
+                        <span class="bg-emerald-900/80 text-white text-[9px] px-1.5 py-0.5 rounded block mt-1 font-bold">Penjawab</span>
+                    </div>
+
+                    <div class="akatsuki-card p-2 group hover:border-red-500">
+                        <img src="./assets/image27.png" class="h-32 mx-auto object-contain drop-shadow-[0_0_10px_rgba(220,38,38,0.8)]" alt="Hidan">
+                        <h4 class="text-xs font-shinobi text-gray-300 mt-2">NOTULEN</h4>
+                        <span class="bg-gray-800 text-white text-[9px] px-1.5 py-0.5 rounded block mt-1 font-bold">MC / Formal</span>
                     </div>
                 </div>
             </section>
 
-            <!-- SLIDE 3: BAB I - PROFIL PERUSAHAAN -->
-            <section data-auto-animate data-background-color="#1C120C">
-                <div class="header-ribbon mb-6">
+            <!-- SLIDE 3: AWAL MULA / PROFIL PERUSAHAAN (Obito & Rin Art) -->
+            <section data-auto-animate data-background-image="./assets/image10.jpeg">
+                <div class="akatsuki-ribbon mb-6">
                     <div class="flex items-center space-x-3">
-                        <span class="number-badge text-sm w-7 h-7">I</span>
-                        <h2 data-id="title-main" class="text-lg font-bold text-[#E5C365] m-0">BAB I: PROFIL PERUSAHAAN</h2>
+                        <span class="sharingan-badge w-6 h-6 rounded-full flex items-center justify-center text-xs text-white font-bold">1</span>
+                        <h2 data-id="title-main" class="text-lg font-shinobi text-red-500 m-0">AWAL MULA: PROFIL PERUSAHAAN</h2>
                     </div>
                     <img data-id="logo-unpam" src="./assets/unpam.png" class="w-7 h-7" alt="UNPAM">
                 </div>
 
-                <div class="grid grid-cols-2 gap-8">
-                    <!-- MYOR Card -->
-                    <div class="superman-card border-l-8 border-l-blue-600" data-id="card-bab1">
-                        <div class="flex items-center justify-between mb-4 pb-2 border-b border-gray-200">
-                            <div>
-                                <h3 class="text-2xl font-extrabold text-[#2D1E15]">PT Mayora Indah Tbk</h3>
-                                <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-0.5 rounded">Ticker: MYOR</span>
-                            </div>
-                            <i class="fa-solid fa-cookie-bite text-4xl text-blue-600"></i>
+                <div class="grid grid-cols-2 gap-6 items-center">
+                    <div class="akatsuki-card border-l-4 border-l-blue-500">
+                        <div class="flex items-center justify-between mb-3 border-b border-red-900/50 pb-2">
+                            <h3 class="text-xl font-extrabold text-blue-400">PT Mayora Indah Tbk</h3>
+                            <span class="bg-blue-900/80 text-blue-200 text-xs px-2 py-0.5 rounded font-bold">MYOR</span>
                         </div>
-                        <p class="text-xs leading-relaxed text-gray-700 font-medium mb-4">
-                            Salah satu kelompok bisnis produk konsumen terkemuka di Indonesia. Bergerak di bidang pengolahan makanan dan minuman dengan produk ikonik yang mendominasi pangsa pasar seperti <strong>Biskuit Roma, Kopiko, Torabika, dan Energen</strong>.
+                        <p class="text-xs text-gray-200 leading-relaxed font-medium mb-3">
+                            Salah satu kelompok bisnis produk konsumen terkemuka di Indonesia. Mengolah produk makanan & minuman ikonik seperti <strong>Biskuit Roma, Kopiko, Torabika, dan Energen</strong>.
                         </p>
-                        <div class="bg-blue-50 p-3 rounded-xl border border-blue-200 text-xs text-blue-900 font-semibold">
-                            <i class="fa-solid fa-bullseye text-blue-600 mr-1"></i> Fokus Utama: Ekspansi pasar ekspor secara masif dan inovasi produk FMCG cepat saji.
+                        <div class="bg-black/60 p-2.5 rounded-lg text-[11px] text-blue-300 border border-blue-500/30">
+                            <i class="fa-solid fa-bullseye mr-1 text-blue-400"></i> Fokus pada ekspansi pasar ekspor global & inovasi FMCG.
                         </div>
                     </div>
 
-                    <!-- ICBP Card -->
-                    <div class="superman-card border-l-8 border-l-emerald-600">
-                        <div class="flex items-center justify-between mb-4 pb-2 border-b border-gray-200">
-                            <div>
-                                <h3 class="text-2xl font-extrabold text-[#2D1E15]">PT Indofood CBP Tbk</h3>
-                                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded">Ticker: ICBP</span>
-                            </div>
-                            <i class="fa-solid fa-bowl-food text-4xl text-emerald-600"></i>
+                    <div class="akatsuki-card border-l-4 border-l-emerald-500">
+                        <div class="flex items-center justify-between mb-3 border-b border-red-900/50 pb-2">
+                            <h3 class="text-xl font-extrabold text-emerald-400">PT Indofood CBP Tbk</h3>
+                            <span class="bg-emerald-900/80 text-emerald-200 text-xs px-2 py-0.5 rounded font-bold">ICBP</span>
                         </div>
-                        <p class="text-xs leading-relaxed text-gray-700 font-medium mb-4">
-                            Pemain dominan dalam industri produk konsumen bermerek di Indonesia. Portofolio bisnisnya mencakup <strong>mi instan (Indomie), produk susu, makanan ringan, penyedap makanan, serta biskuit</strong>.
+                        <p class="text-xs text-gray-200 leading-relaxed font-medium mb-3">
+                            Pemain dominan dalam industri produk konsumen bermerek di Indonesia dengan portofolio mi instan (<strong>Indomie</strong>), penyedap, produk susu, dan makanan ringan.
                         </p>
-                        <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200 text-xs text-emerald-900 font-semibold">
-                            <i class="fa-solid fa-shield-halved text-emerald-600 mr-1"></i> Keunggulan: Anak perusahaan Indofood yang menyumbang pendapatan sangat stabil berkapitalisasi besar.
+                        <div class="bg-black/60 p-2.5 rounded-lg text-[11px] text-emerald-300 border border-emerald-500/30">
+                            <i class="fa-solid fa-crown mr-1 text-emerald-400"></i> Anak perusahaan Indofood berkapitalisasi masif & pendapatan stabil.
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- SLIDE 4: BAB II - POSISI KEUANGAN (NERACA) -->
-            <section data-auto-animate data-background-color="#1C120C">
-                <div class="header-ribbon mb-4">
+            <!-- SLIDE 4: BAB I - POSISI KEUANGAN (Obito Mask Red Moon) -->
+            <section data-auto-animate data-background-image="./assets/image32.jpeg">
+                <div class="akatsuki-ribbon mb-4">
                     <div class="flex items-center space-x-3">
-                        <span class="number-badge text-sm w-7 h-7">II</span>
-                        <h2 data-id="title-main" class="text-lg font-bold text-[#E5C365] m-0">BAB II: POSISI KEUANGAN (NERACA 2020 - 2025)</h2>
+                        <span class="sharingan-badge w-6 h-6 rounded-full flex items-center justify-center text-xs text-white font-bold">I</span>
+                        <h2 data-id="title-main" class="text-lg font-shinobi text-red-500 m-0">BAB I: POSISI KEUANGAN (NERACA)</h2>
                     </div>
-                    <span class="text-xs text-gray-400">Dalam Miliar Rupiah</span>
+                    <span class="text-xs text-amber-400">Dalam Miliar Rupiah</span>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
-                    <!-- Tabel MYOR -->
                     <div>
-                        <div class="bg-[#2D1E15] text-[#E5C365] text-xs font-bold px-3 py-1.5 rounded-t-lg flex justify-between items-center">
-                            <span><i class="fa-solid fa-cookie-bite mr-1"></i> NERACA PT MAYORA INDAH (MYOR)</span>
+                        <div class="bg-red-950 text-amber-400 text-xs font-bold px-3 py-1.5 rounded-t-lg flex justify-between border-t border-red-600">
+                            <span><i class="fa-solid fa-cookie-bite mr-1"></i> NERACA MYOR</span>
                             <span class="text-white text-[10px]">2020-2025</span>
                         </div>
-                        <table class="superman-table">
+                        <table class="akatsuki-table">
                             <thead>
                                 <tr><th>Indikator</th><th>'20</th><th>'21</th><th>'22</th><th>'23</th><th>'24</th><th>'25</th></tr>
                             </thead>
                             <tbody>
-                                <tr><td class="font-bold text-left">Aset Lancar</td><td>12.8k</td><td>12.6k <span class="down-badge">↓</span></td><td>14.7k <span class="up-badge">↑</span></td><td>16.0k <span class="up-badge">↑</span></td><td>17.5k <span class="up-badge">↑</span></td><td>19.5k <span class="up-badge">↑</span></td></tr>
-                                <tr><td class="font-bold text-left">Aset Tetap</td><td>6.9k</td><td>7.2k <span class="up-badge">↑</span></td><td>7.5k <span class="up-badge">↑</span></td><td>7.8k <span class="up-badge">↑</span></td><td>8.3k <span class="up-badge">↑</span></td><td>8.6k <span class="up-badge">↑</span></td></tr>
-                                <tr><td class="font-bold text-left">Utang Lancar</td><td>3.5k</td><td>4.4k <span class="up-badge">↑</span></td><td>5.2k <span class="up-badge">↑</span></td><td>4.4k <span class="down-badge">↓</span></td><td>4.8k <span class="up-badge">↑</span></td><td>5.0k <span class="up-badge">↑</span></td></tr>
-                                <tr><td class="font-bold text-left">Utang Jjang Panjang</td><td>5.0k</td><td>4.1k <span class="down-badge">↓</span></td><td>4.2k <span class="up-badge">↑</span></td><td>4.1k <span class="down-badge">↓</span></td><td>4.1k <span class="up-badge">↑</span></td><td>4.1k =</td></tr>
-                                <tr class="bg-amber-100 font-bold"><td class="text-left text-amber-900">Modal (Ekuitas)</td><td>11.2k</td><td>11.3k</td><td>12.8k</td><td>15.2k</td><td>16.8k</td><td>18.9k</td></tr>
+                                <tr><td class="font-bold text-left">Aset Lancar</td><td>12.8k</td><td>12.6k <span class="down-val">↓</span></td><td>14.7k <span class="up-val">↑</span></td><td>16.0k <span class="up-val">↑</span></td><td>17.5k <span class="up-val">↑</span></td><td>19.5k <span class="up-val">↑</span></td></tr>
+                                <tr><td class="font-bold text-left">Aset Tetap</td><td>6.9k</td><td>7.2k <span class="up-val">↑</span></td><td>7.5k <span class="up-val">↑</span></td><td>7.8k <span class="up-val">↑</span></td><td>8.3k <span class="up-val">↑</span></td><td>8.6k <span class="up-val">↑</span></td></tr>
+                                <tr><td class="font-bold text-left">Utang Lancar</td><td>3.5k</td><td>4.4k <span class="up-val">↑</span></td><td>5.2k <span class="up-val">↑</span></td><td>4.4k <span class="down-val">↓</span></td><td>4.8k <span class="up-val">↑</span></td><td>5.0k <span class="up-val">↑</span></td></tr>
+                                <tr><td class="font-bold text-left">Utang JP</td><td>5.0k</td><td>4.1k <span class="down-val">↓</span></td><td>4.2k <span class="up-val">↑</span></td><td>4.1k <span class="down-val">↓</span></td><td>4.1k <span class="up-val">↑</span></td><td>4.1k =</td></tr>
+                                <tr class="bg-red-900/60 font-bold"><td class="text-left text-amber-400">Modal (Ekuitas)</td><td>11.2k</td><td>11.3k</td><td>12.8k</td><td>15.2k</td><td>16.8k</td><td>18.9k</td></tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <!-- Tabel ICBP -->
                     <div>
-                        <div class="bg-[#2D1E15] text-[#E5C365] text-xs font-bold px-3 py-1.5 rounded-t-lg flex justify-between items-center">
-                            <span><i class="fa-solid fa-bowl-food mr-1"></i> NERACA PT INDOFOOD CBP (ICBP)</span>
+                        <div class="bg-red-950 text-amber-400 text-xs font-bold px-3 py-1.5 rounded-t-lg flex justify-between border-t border-red-600">
+                            <span><i class="fa-solid fa-bowl-food mr-1"></i> NERACA ICBP</span>
                             <span class="text-white text-[10px]">2020-2025</span>
                         </div>
-                        <table class="superman-table">
+                        <table class="akatsuki-table">
                             <thead>
                                 <tr><th>Indikator</th><th>'20</th><th>'21</th><th>'22</th><th>'23</th><th>'24</th><th>'25</th></tr>
                             </thead>
                             <tbody>
-                                <tr><td class="font-bold text-left">Aset Lancar</td><td>20.7k</td><td>28.3k <span class="up-badge">↑</span></td><td>25.1k <span class="down-badge">↓</span></td><td>29.1k <span class="up-badge">↑</span></td><td>33.0k <span class="up-badge">↑</span></td><td>38.0k <span class="up-badge">↑</span></td></tr>
-                                <tr><td class="font-bold text-left">Aset Tetap</td><td>82.8k</td><td>89.7k <span class="up-badge">↑</span></td><td>90.2k <span class="up-badge">↑</span></td><td>90.1k <span class="down-badge">↓</span></td><td>92.0k <span class="up-badge">↑</span></td><td>94.0k <span class="up-badge">↑</span></td></tr>
-                                <tr><td class="font-bold text-left">Utang Lancar</td><td>9.5k</td><td>14.1k <span class="up-badge">↑</span></td><td>12.3k <span class="down-badge">↓</span></td><td>13.5k <span class="up-badge">↑</span></td><td>14.5k <span class="up-badge">↑</span></td><td>16.0k <span class="up-badge">↑</span></td></tr>
-                                <tr><td class="font-bold text-left">Utang Jjang Panjang</td><td>43.7k</td><td>49.2k <span class="up-badge">↑</span></td><td>45.1k <span class="down-badge">↓</span></td><td>43.2k <span class="down-badge">↓</span></td><td>42.5k <span class="down-badge">↓</span></td><td>42.0k <span class="down-badge">↓</span></td></tr>
-                                <tr class="bg-emerald-100 font-bold"><td class="text-left text-emerald-900">Modal (Ekuitas)</td><td>50.3k</td><td>54.7k</td><td>57.8k</td><td>62.4k</td><td>68.0k</td><td>74.0k</td></tr>
+                                <tr><td class="font-bold text-left">Aset Lancar</td><td>20.7k</td><td>28.3k <span class="up-val">↑</span></td><td>25.1k <span class="down-val">↓</span></td><td>29.1k <span class="up-val">↑</span></td><td>33.0k <span class="up-val">↑</span></td><td>38.0k <span class="up-val">↑</span></td></tr>
+                                <tr><td class="font-bold text-left">Aset Tetap</td><td>82.8k</td><td>89.7k <span class="up-val">↑</span></td><td>90.2k <span class="up-val">↑</span></td><td>90.1k <span class="down-val">↓</span></td><td>92.0k <span class="up-val">↑</span></td><td>94.0k <span class="up-val">↑</span></td></tr>
+                                <tr><td class="font-bold text-left">Utang Lancar</td><td>9.5k</td><td>14.1k <span class="up-val">↑</span></td><td>12.3k <span class="down-val">↓</span></td><td>13.5k <span class="up-val">↑</span></td><td>14.5k <span class="up-val">↑</span></td><td>16.0k <span class="up-val">↑</span></td></tr>
+                                <tr><td class="font-bold text-left">Utang JP</td><td>43.7k</td><td>49.2k <span class="up-val">↑</span></td><td>45.1k <span class="down-val">↓</span></td><td>43.2k <span class="down-val">↓</span></td><td>42.5k <span class="down-val">↓</span></td><td>42.0k <span class="down-val">↓</span></td></tr>
+                                <tr class="bg-red-900/60 font-bold"><td class="text-left text-amber-400">Modal (Ekuitas)</td><td>50.3k</td><td>54.7k</td><td>57.8k</td><td>62.4k</td><td>68.0k</td><td>74.0k</td></tr>
                             </tbody>
                         </table>
                     </div>
-                </div>
-
-                <div class="mt-4 superman-card py-2 px-4 text-xs font-semibold text-gray-700 bg-amber-50 flex items-center justify-between">
-                    <span><i class="fa-solid fa-circle-check text-green-600 mr-2"></i> <strong>Temuan Utama:</strong> Neraca kedua perusahaan menunjukkan kenaikan Modal secara konsisten tiap tahun.</span>
-                    <span class="bg-[#2D1E15] text-[#E5C365] px-3 py-1 rounded-full text-[10px]">ICBP Berhasil Menekan Utang JP Sejak 2022</span>
                 </div>
             </section>
 
-            <!-- SLIDE 5: BAB III - KINERJA LABA RUGI (SupermanPPT 4 Highlight Cards) -->
-            <section data-auto-animate data-background-color="#1C120C">
-                <div class="header-ribbon mb-6">
+            <!-- SLIDE 5: BAB II - KINERJA LABA RUGI (Nagato Art) -->
+            <section data-auto-animate data-background-image="./assets/image30.jpeg">
+                <div class="akatsuki-ribbon mb-6">
                     <div class="flex items-center space-x-3">
-                        <span class="number-badge text-sm w-7 h-7">III</span>
-                        <h2 data-id="title-main" class="text-lg font-bold text-[#E5C365] m-0">BAB III: KINERJA LABA RUGI (EBIT & EAT)</h2>
+                        <span class="sharingan-badge w-6 h-6 rounded-full flex items-center justify-center text-xs text-white font-bold">II</span>
+                        <h2 data-id="title-main" class="text-lg font-shinobi text-red-500 m-0">BAB II: KINERJA LABA RUGI (EBIT & EAT)</h2>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-6">
-                    <!-- Highlight 1: Penjualan MYOR -->
-                    <div class="superman-card">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="number-badge w-8 h-8 text-sm">1</span>
-                            <span class="text-xs font-bold text-blue-600 uppercase">MYOR Penjualan</span>
+                    <div class="akatsuki-card border-l-4 border-l-red-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-amber-400 uppercase"><i class="fa-solid fa-bolt mr-1"></i> Penjualan MYOR</span>
+                            <span class="sharingan-badge w-6 h-6 rounded-full text-center text-xs font-bold leading-6">1</span>
                         </div>
-                        <h4 class="text-3xl font-extrabold text-[#2D1E15]">40.503 M</h4>
-                        <p class="text-xs text-gray-600 font-semibold mt-1">Tumbuh konsisten dari 24.476 M (2020) ke 40.503 M (2025) (+12.3% per tahun).</p>
+                        <h4 class="text-3xl font-extrabold text-white">40.503 M</h4>
+                        <p class="text-xs text-gray-300 mt-2 font-medium">Tumbuh konsisten dari 24.476 M (2020) hingga mencapai 40.503 M (2025).</p>
                     </div>
 
-                    <!-- Highlight 2: Laba Bersih MYOR -->
-                    <div class="superman-card">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="number-badge w-8 h-8 text-sm">2</span>
-                            <span class="text-xs font-bold text-blue-600 uppercase">MYOR Laba Bersih (EAT)</span>
+                    <div class="akatsuki-card border-l-4 border-l-amber-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-amber-400 uppercase"><i class="fa-solid fa-coins mr-1"></i> Laba Bersih MYOR</span>
+                            <span class="sharingan-badge w-6 h-6 rounded-full text-center text-xs font-bold leading-6">2</span>
                         </div>
-                        <h4 class="text-3xl font-extrabold text-blue-700">3.334 M</h4>
-                        <p class="text-xs text-gray-600 font-semibold mt-1">Sempat Anjlok 42.3% di 2021, lalu melonjak +62.7% di 2022 hingga mencapai 3.3 M.</p>
+                        <h4 class="text-3xl font-extrabold text-amber-400">3.334 M</h4>
+                        <p class="text-xs text-gray-300 mt-2 font-medium">Sempat anjlok -42.3% di 2021, lalu melesat +62.7% di 2022 hingga tembus 3.3 M.</p>
                     </div>
 
-                    <!-- Highlight 3: Penjualan ICBP -->
-                    <div class="superman-card">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="number-badge w-8 h-8 text-sm">3</span>
-                            <span class="text-xs font-bold text-emerald-600 uppercase">ICBP Penjualan</span>
+                    <div class="akatsuki-card border-l-4 border-l-emerald-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-emerald-400 uppercase"><i class="fa-solid fa-crown mr-1"></i> Penjualan ICBP</span>
+                            <span class="sharingan-badge w-6 h-6 rounded-full text-center text-xs font-bold leading-6">3</span>
                         </div>
-                        <h4 class="text-3xl font-extrabold text-[#2D1E15]">78.000 M</h4>
-                        <p class="text-xs text-gray-600 font-semibold mt-1">Skala masif raksasa FMCG, naik drastis dari 46.641 M (2020) ke 78.000 M (2025).</p>
+                        <h4 class="text-3xl font-extrabold text-white">78.000 M</h4>
+                        <p class="text-xs text-gray-300 mt-2 font-medium">Skala raksasa pasar, meroket drastis dari 46.641 M (2020) ke 78.000 M (2025).</p>
                     </div>
 
-                    <!-- Highlight 4: Laba Bersih ICBP -->
-                    <div class="superman-card">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="number-badge w-8 h-8 text-sm">4</span>
-                            <span class="text-xs font-bold text-emerald-600 uppercase">ICBP Laba Bersih (EAT)</span>
+                    <div class="akatsuki-card border-l-4 border-l-purple-500">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-purple-400 uppercase"><i class="fa-solid fa-gem mr-1"></i> Laba Bersih ICBP</span>
+                            <span class="sharingan-badge w-6 h-6 rounded-full text-center text-xs font-bold leading-6">4</span>
                         </div>
-                        <h4 class="text-3xl font-extrabold text-emerald-700">8.200 M</h4>
-                        <p class="text-xs text-gray-600 font-semibold mt-1">Sempat tertekan tajam di 2022 (4.5M) sebelum meledak +52.4% di 2023 hingga 8.2 M.</p>
+                        <h4 class="text-3xl font-extrabold text-purple-400">8.200 M</h4>
+                        <p class="text-xs text-gray-300 mt-2 font-medium">Sempat tertekan di 2022 (4.5 M) sebelum meroket +52.4% di 2023 ke 8.2 M.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- SLIDE 6: BAB IV - ANALISIS GRAFIS (Chart.js Interactive) -->
-            <section data-auto-animate data-background-color="#1C120C">
-                <div class="header-ribbon mb-4">
+            <!-- SLIDE 6: BAB III - ANALISIS GRAFIS (Itachi Crows Video Loop) -->
+            <section data-auto-animate data-background-image="./assets/image41.jpeg">
+                <video src="./assets/VAG4lF75Xkw.mp4" autoplay loop muted class="absolute inset-0 w-full h-full object-cover opacity-40 -z-10"></video>
+
+                <div class="akatsuki-ribbon mb-4">
                     <div class="flex items-center space-x-3">
-                        <span class="number-badge text-sm w-7 h-7">IV</span>
-                        <h2 data-id="title-main" class="text-lg font-bold text-[#E5C365] m-0">BAB IV: ANALISIS GRAFIS TREN PENJUALAN</h2>
+                        <span class="sharingan-badge w-6 h-6 rounded-full flex items-center justify-center text-xs text-white font-bold">III</span>
+                        <h2 data-id="title-main" class="text-lg font-shinobi text-red-500 m-0">BAB III: TREN PENJUALAN KOMPARATIF</h2>
                     </div>
                 </div>
 
-                <div class="superman-card p-4" style="height: 380px;">
-                    <canvas id="salesChartSuper"></canvas>
-                </div>
-
-                <div class="mt-3 bg-[#2D1E15] p-3 rounded-xl border border-[#C59B27]/40 text-center text-xs text-[#E5C365]">
-                    <i class="fa-solid fa-chart-line mr-1"></i> Grafik menunjukkan Tren Penjualan <strong>Upward</strong> yang sangat kuat. Skala bisnis ICBP hampir 2x lipat dari skala bisnis MYOR.
+                <div class="akatsuki-card p-4" style="height: 380px;">
+                    <canvas id="akatsukiChart"></canvas>
                 </div>
             </section>
 
-            <!-- SLIDE 7: BAB V - KESIMPULAN & REKOMENDASI -->
-            <section data-auto-animate data-background-color="#1C120C">
-                <div class="header-ribbon mb-6">
+            <!-- SLIDE 7: KEHANCURAN & KESIMPULAN (Pain Shinra Tensei Konoha) -->
+            <section data-auto-animate data-background-image="./assets/image61.jpeg">
+                <div class="akatsuki-ribbon mb-6">
                     <div class="flex items-center space-x-3">
-                        <span class="number-badge text-sm w-7 h-7">V</span>
-                        <h2 data-id="title-main" class="text-lg font-bold text-[#E5C365] m-0">BAB V: KESIMPULAN POLA PERTUMBUHAN</h2>
+                        <span class="sharingan-badge w-6 h-6 rounded-full flex items-center justify-center text-xs text-white font-bold">IV</span>
+                        <h2 data-id="title-main" class="text-lg font-shinobi text-red-500 m-0">KEHANCURAN & KESIMPULAN</h2>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-8 mb-6">
-                    <div class="superman-card border-t-8 border-t-blue-600">
-                        <h3 class="text-xl font-bold text-blue-900 mb-2">MYOR (Mayora Indah)</h3>
-                        <div class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">POLA: FLUKTUATIF PROGRESIF</div>
-                        <p class="text-xs text-gray-700 leading-relaxed font-semibold">
-                            Tumbuh positif secara tren jangka panjang, dengan lonjakan laba signifikan pada 2022-2023 namun mengalami fluktuasi beban di 2021 & 2024.
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="akatsuki-card border-t-4 border-t-red-600">
+                        <h3 class="text-xl font-shinobi text-red-500 mb-2">MYOR (MAYORA)</h3>
+                        <span class="bg-red-950 text-amber-400 text-xs px-3 py-1 rounded-full font-bold inline-block mb-3">POLA: FLUKTUATIF PROGRESIF</span>
+                        <p class="text-xs text-gray-200 leading-relaxed font-semibold">
+                            Tumbuh positif dalam jangka panjang. Memiliki ketahanan tinggi meski menghadapi kontraksi beban bahan baku di tahun 2021 & 2024.
                         </p>
                     </div>
 
-                    <div class="superman-card border-t-8 border-t-emerald-600">
-                        <h3 class="text-xl font-bold text-emerald-900 mb-2">ICBP (Indofood CBP)</h3>
-                        <div class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">POLA: FLUKTUATIF PROGRESIF</div>
-                        <p class="text-xs text-gray-700 leading-relaxed font-semibold">
-                            Skala penjualan masif dan sangat dominan. Laba bersih sempat tertekan di 2022 akibat faktor makro, sebelum bangkit melesat kuat melampaui rekor di 2023-2025.
+                    <div class="akatsuki-card border-t-4 border-t-emerald-600">
+                        <h3 class="text-xl font-shinobi text-emerald-400 mb-2">ICBP (INDOFOOD)</h3>
+                        <span class="bg-emerald-950 text-emerald-300 text-xs px-3 py-1 rounded-full font-bold inline-block mb-3">POLA: FLUKTUATIF PROGRESIF</span>
+                        <p class="text-xs text-gray-200 leading-relaxed font-semibold">
+                            Dominasi skala pasar yang belum tertandingi. Berhasil melewati krisis laba 2022 dan mencetak rekor laba bersih baru di 2023-2025.
                         </p>
                     </div>
                 </div>
+            </section>
 
-                <div class="text-center mt-6">
-                    <button onclick="shootConfetti()" class="bg-gradient-to-r from-[#C59B27] to-[#E5C365] text-black font-extrabold px-8 py-3 rounded-full shadow-lg hover:scale-105 transition duration-300">
-                        <i class="fa-solid fa-clapping-hands mr-2"></i> SELESAI & UCAPKAN TERIMA KASIH
+            <!-- SLIDE 8: ADA PERTANYAAN? (Rinnegan Close up) -->
+            <section data-auto-animate data-background-image="./assets/image85.png">
+                <div class="flex flex-col items-center justify-center text-center h-full pt-16">
+                    <h1 class="text-4xl md:text-6xl font-shinobi text-red-500 mb-4 tracking-widest drop-shadow-[0_0_25px_rgba(239,68,68,0.9)]">
+                        ADA PERTANYAAN?
+                    </h1>
+
+                    <p class="text-base text-amber-400 font-semibold mb-8 max-w-xl bg-black/80 px-6 py-2 rounded-full border border-red-600/60">
+                        "Dunia Tidak Akan Pernah Memahami Perdamaian Sampai Mereka Memahami Rasa Sakit." — Pain Akatsuki
+                    </p>
+
+                    <button onclick="shootConfetti()" class="bg-gradient-to-r from-red-700 via-red-600 to-amber-500 text-white font-shinobi text-lg px-10 py-4 rounded-full shadow-[0_0_30px_rgba(239,68,68,0.8)] hover:scale-110 transition duration-300">
+                        🔥 SHINRA TENSEI! (AKHIRI PRESENTASI)
                     </button>
                 </div>
             </section>
@@ -419,7 +400,7 @@
         </div>
     </div>
 
-    <!-- Reveal.js & Confetti Scripts -->
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
@@ -436,11 +417,11 @@
         });
 
         function shootConfetti() {
-            var duration = 3000;
+            var duration = 3500;
             var end = Date.now() + duration;
             (function frame() {
-                confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#C59B27', '#ffffff', '#2D1E15'] });
-                confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#C59B27', '#ffffff', '#2D1E15'] });
+                confetti({ particleCount: 6, angle: 60, spread: 60, origin: { x: 0 }, colors: ['#EF4444', '#F59E0B', '#000000'] });
+                confetti({ particleCount: 6, angle: 120, spread: 60, origin: { x: 1 }, colors: ['#EF4444', '#F59E0B', '#000000'] });
                 if (Date.now() < end) { requestAnimationFrame(frame); }
             }());
         }
@@ -449,7 +430,7 @@
 
         Reveal.on('slidechanged', event => {
             if(event.indexh === 5 && !salesChartInstance) {
-                const ctx = document.getElementById('salesChartSuper').getContext('2d');
+                const ctx = document.getElementById('akatsukiChart').getContext('2d');
                 salesChartInstance = new Chart(ctx, {
                     type: 'line',
                     data: {
@@ -458,33 +439,33 @@
                             {
                                 label: 'PT Indofood CBP Tbk (ICBP)',
                                 data: [46641, 56803, 64793, 67909, 72500, 78000],
-                                borderColor: '#10b981',
-                                backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                                borderColor: '#34D399',
+                                backgroundColor: 'rgba(52, 211, 153, 0.15)',
                                 fill: true,
                                 borderWidth: 3,
-                                pointBackgroundColor: '#10b981',
-                                pointRadius: 5
+                                pointBackgroundColor: '#34D399',
+                                pointRadius: 6
                             },
                             {
                                 label: 'PT Mayora Indah Tbk (MYOR)',
                                 data: [24476, 27904, 30669, 31485, 36073, 40503],
-                                borderColor: '#2563eb',
-                                backgroundColor: 'rgba(37, 99, 235, 0.15)',
+                                borderColor: '#EF4444',
+                                backgroundColor: 'rgba(239, 68, 68, 0.15)',
                                 fill: true,
                                 borderWidth: 3,
-                                pointBackgroundColor: '#2563eb',
-                                pointRadius: 5
+                                pointBackgroundColor: '#EF4444',
+                                pointRadius: 6
                             }
                         ]
                     },
                     options: {
                         responsive: true, maintainAspectRatio: false,
                         plugins: {
-                            legend: { labels: { color: '#2D1E15', font: { family: 'Plus Jakarta Sans', weight: 'bold' } } }
+                            legend: { labels: { color: '#F3F4F6', font: { family: 'Plus Jakarta Sans', weight: 'bold', size: 14 } } }
                         },
                         scales: {
-                            y: { ticks: { color: '#2D1E15' }, grid: { color: '#E8D9C5' } },
-                            x: { ticks: { color: '#2D1E15' }, grid: { color: '#E8D9C5' } }
+                            y: { ticks: { color: '#9CA3AF' }, grid: { color: 'rgba(239, 68, 68, 0.15)' } },
+                            x: { ticks: { color: '#9CA3AF' }, grid: { color: 'rgba(239, 68, 68, 0.15)' } }
                         }
                     }
                 });
