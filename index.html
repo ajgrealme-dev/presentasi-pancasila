@@ -39,7 +39,7 @@
         }
 
         /* 3D Flip Card */
-        .flip-card { perspective: 1000px; height: 320px; width: 100%; }
+        .flip-card { perspective: 1000px; height: 280px; width: 100%; }
         .flip-card-inner {
             position: relative; width: 100%; height: 100%; text-align: center;
             transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer;
@@ -63,10 +63,9 @@
     <div class="reveal">
         <div class="slides">
             
-            <!-- SLIDE 1: HERO (Video Background + Morph Target) -->
-            <section data-auto-animate data-background-video="https://cdn.pixabay.com/video/2020/05/24/40061-424683070_large.mp4" data-background-video-loop data-background-video-muted data-background-opacity="0.3">
+            <!-- SLIDE 1: HERO -->
+            <section data-auto-animate data-background-color="#0B0F17">
                 <div class="flex flex-col items-center justify-center text-center h-full pt-20">
-                    <!-- Logo UNPAM Asli -->
                     <img data-id="logo-unpam" src="./assets/unpam.png" class="w-40 h-40 mb-6 drop-shadow-2xl" alt="Logo UNPAM">
                     
                     <h1 data-id="title-main" class="text-6xl md:text-8xl font-bold text-[#D4AF37] drop-shadow-lg mb-4">PANCASILA</h1>
@@ -82,9 +81,8 @@
                 </div>
             </section>
 
-            <!-- SLIDE 2: MORPHING TRANSITION (Magic Move) -->
+            <!-- SLIDE 2: MORPHING TRANSITION -->
             <section data-auto-animate data-background-color="#0B0F17">
-                <!-- Elemen berpindah tempat dan mengecil secara otomatis (Morph) -->
                 <div class="flex items-center space-x-6 mb-12 border-b border-gray-800 pb-4">
                     <img data-id="logo-unpam" src="./assets/unpam.png" class="w-16 h-16" alt="Logo UNPAM">
                     <div>
@@ -94,10 +92,8 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-8">
-                    <!-- GIF Animasi Sejarah Asli -->
                     <div class="glass-card relative overflow-hidden group">
                         <div class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-10">GIF Animasi Asli</div>
-                        <!-- GIF BENDERA BERKIBAR DARI GIPHY -->
                         <img src="./assets/bendera.gif" alt="Bendera Indonesia GIF" class="w-full h-48 object-cover rounded-lg group-hover:scale-110 transition duration-500">
                         <h4 class="text-xl font-bold text-white mt-4">Lahirnya Pancasila</h4>
                         <p class="text-sm text-gray-300 mt-2">Pidato Soekarno pada 1 Juni 1945 menggemakan 5 prinsip dasar negara untuk pertama kalinya di sidang BPUPKI.</p>
@@ -105,7 +101,6 @@
 
                     <div class="glass-card relative overflow-hidden group">
                         <div class="absolute top-2 right-2 bg-[#D4AF37] text-black text-xs font-bold px-2 py-1 rounded z-10">Foto Sejarah</div>
-                        <!-- FOTO ASLI WIKIMEDIA -->
                         <img src="./assets/proklamasi.jpg" alt="Proklamasi" class="w-full h-48 object-cover rounded-lg group-hover:scale-110 transition duration-500 opacity-80">
                         <h4 class="text-xl font-bold text-white mt-4">Pengesahan PPKI</h4>
                         <p class="text-sm text-gray-300 mt-2">18 Agustus 1945, Pancasila disahkan sebagai dasar negara yang mengikat seluruh elemen bangsa Indonesia.</p>
@@ -113,83 +108,90 @@
                 </div>
             </section>
 
-            <!-- SLIDE 3: INTERACTIVE 3D FLIP CARDS (Simbol Pancasila Asli) -->
-            <section data-background-color="#0B0F17">
-                <h2 class="text-4xl font-bold text-center text-[#D4AF37] mb-2">Filsafat 5 Sila Pancasila</h2>
-                <p class="text-center text-gray-400 mb-8 text-sm"><i class="fa-solid fa-hand-pointer mr-2 animate-bounce"></i>Silahkan KLIK kartu di bawah ini untuk melihat hakikat ontologisnya (Efek 3D Flip Interaktif)</p>
+            <!-- SLIDE 3: INTERACTIVE 3D FLIP CARDS WITH MORPH -->
+            <section data-auto-animate data-background-color="#0B0F17">
+                <div class="flex items-center space-x-4 mb-6">
+                    <img data-id="logo-unpam" src="./assets/unpam.png" class="w-12 h-12" alt="Logo UNPAM">
+                    <h1 data-id="title-main" class="text-2xl font-bold text-[#D4AF37] m-0 tracking-widest">PANCASILA</h1>
+                    <span class="text-gray-500 mx-2">|</span>
+                    <h2 class="text-xl font-light text-white m-0">Filsafat 5 Sila</h2>
+                </div>
+                
+                <p class="text-left text-gray-400 mb-6 text-sm"><i class="fa-solid fa-hand-pointer mr-2 animate-bounce"></i>Silahkan KLIK kartu di bawah ini untuk melihat hakikat ontologisnya (Efek 3D Flip Interaktif)</p>
                 
                 <div class="grid grid-cols-5 gap-4">
-                    <!-- Sila 1 -->
                     <div class="flip-card" onclick="this.classList.toggle('flipped')">
                         <div class="flip-card-inner">
                             <div class="flip-card-front flex flex-col items-center justify-center">
-                                <!-- LAMBANG GARUDA ASLI DARI WIKIMEDIA -->
-                                <img src="./assets/garuda.svg" class="w-20 mb-4" alt="Bintang">
+                                <img src="./assets/garuda.svg" class="w-16 mb-4" alt="Bintang">
                                 <h4 class="text-lg font-bold text-[#D4AF37]">Sila I</h4>
-                                <p class="text-xs text-white mt-2">Ketuhanan Yang Maha Esa</p>
                             </div>
                             <div class="flip-card-back">
-                                <h4 class="text-lg font-bold mb-2"><i class="fa-solid fa-star"></i> Ontologis</h4>
-                                <p class="text-xs font-semibold leading-relaxed">Manusia adalah makhluk ciptaan Tuhan. Negara menjamin kemerdekaan beragama.</p>
+                                <h4 class="text-sm font-bold mb-2"><i class="fa-solid fa-star"></i> Ontologis</h4>
+                                <p class="text-xs font-semibold leading-relaxed">Manusia adalah makhluk Tuhan.</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Sila 2 -->
+                    
                     <div class="flip-card" onclick="this.classList.toggle('flipped')">
                         <div class="flip-card-inner">
                             <div class="flip-card-front flex flex-col items-center justify-center">
                                 <h4 class="text-4xl font-bold text-red-500 mb-4"><i class="fa-solid fa-link"></i></h4>
                                 <h4 class="text-lg font-bold text-red-500">Sila II</h4>
-                                <p class="text-xs text-white mt-2">Kemanusiaan Adil & Beradab</p>
                             </div>
                             <div class="flip-card-back bg-red-600">
-                                <h4 class="text-lg font-bold mb-2 text-white"><i class="fa-solid fa-heart"></i> Ontologis</h4>
-                                <p class="text-xs font-semibold leading-relaxed text-white">Menjunjung tinggi harkat martabat manusia & keadilan universal secara interaktif.</p>
+                                <h4 class="text-sm font-bold mb-2 text-white"><i class="fa-solid fa-heart"></i> Ontologis</h4>
+                                <p class="text-xs font-semibold leading-relaxed text-white">Menjunjung tinggi harkat martabat.</p>
                             </div>
                         </div>
                     </div>
+                    
                     <!-- Garuda Besar -->
-                    <div class="col-span-3 glass-card flex items-center justify-center bg-[url('./assets/proklamasi.jpg')] bg-cover bg-center bg-blend-overlay bg-black/70 group relative">
-                        <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition duration-500 rounded-16px"></div>
+                    <div class="col-span-3 glass-card flex items-center justify-center bg-[url('./assets/proklamasi.jpg')] bg-cover bg-center bg-blend-overlay bg-black/70 group relative" style="height: 280px;">
+                        <div class="absolute inset-0 bg-black/50 group-hover:bg-black/20 transition duration-500 rounded-16px"></div>
                         <div class="text-center z-10">
-                            <!-- GARUDA ASLI -->
-                            <img src="./assets/garuda.svg" class="w-32 h-32 mx-auto mb-4 drop-shadow-2xl hover:rotate-12 transition duration-500 cursor-pointer" alt="Garuda Pancasila">
-                            <h3 class="text-3xl font-bold text-white drop-shadow-lg">Bhinneka Tunggal Ika</h3>
-                            <p class="text-sm text-[#D4AF37] font-bold mt-2 bg-black/50 px-4 py-1 rounded-full inline-block">Sorot/Arahkan Mouse Kesini</p>
+                            <img src="./assets/garuda.svg" class="w-24 h-24 mx-auto mb-4 drop-shadow-2xl hover:rotate-12 transition duration-500 cursor-pointer" alt="Garuda Pancasila">
+                            <h3 class="text-2xl font-bold text-white drop-shadow-lg">Bhinneka Tunggal Ika</h3>
+                            <p class="text-xs text-[#D4AF37] font-bold mt-2 bg-black/50 px-4 py-1 rounded-full inline-block">Sorot Mouse Kesini</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- SLIDE 4: DIRECT VIDEO EMBED & KUIS -->
-            <section data-background-color="#0B0F17">
+            <!-- SLIDE 4: DIRECT VIDEO EMBED & KUIS WITH MORPH -->
+            <section data-auto-animate data-background-color="#0B0F17">
+                <div class="flex items-center justify-between w-full mb-6 border-b border-gray-800 pb-3">
+                    <div class="flex items-center space-x-3">
+                        <img data-id="logo-unpam" src="./assets/unpam.png" class="w-8 h-8" alt="Logo UNPAM">
+                        <h1 data-id="title-main" class="text-lg font-bold text-[#D4AF37] m-0 tracking-widest">PANCASILA</h1>
+                    </div>
+                    <span class="text-xs text-gray-500 bg-gray-900 px-3 py-1 rounded-full"><i class="fa-solid fa-check-circle text-emerald-500 mr-1"></i>Evaluasi & Pembelajaran</span>
+                </div>
+
                 <div class="grid grid-cols-2 gap-8 items-center h-full">
                     
-                    <!-- Kuis Interaktif dengan JavaScript Alert/Confetti -->
                     <div class="glass-card text-left">
-                        <div class="flex justify-between items-center mb-6">
-                            <h3 class="text-2xl font-bold text-[#D4AF37]"><i class="fa-solid fa-gamepad mr-2"></i>Kuis Interaktif</h3>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-[#D4AF37]"><i class="fa-solid fa-gamepad mr-2"></i>Kuis Interaktif</h3>
                             <span class="bg-red-600 text-white text-xs px-2 py-1 rounded font-bold animate-pulse">KLIK JAWABAN</span>
                         </div>
-                        <p class="text-lg text-white mb-6">Apa landasan epistemologis (sumber pengetahuan) dari filsafat Pancasila?</p>
+                        <p class="text-sm text-white mb-4">Apa landasan epistemologis (sumber pengetahuan) dari filsafat Pancasila?</p>
                         
-                        <div class="space-y-3">
-                            <button onclick="triggerWrong()" class="w-full text-left p-3 rounded bg-slate-800 hover:bg-red-900/80 border border-slate-600 transition duration-300 text-sm text-white shadow-lg transform hover:-translate-y-1">A. Ideologi Asing & Eksternal</button>
-                            <button onclick="triggerCorrect()" class="w-full text-left p-3 rounded bg-slate-800 hover:bg-emerald-900/80 border border-slate-600 transition duration-300 text-sm text-white shadow-lg transform hover:-translate-y-1">B. Nilai-nilai budaya, adat, & agama bangsa Indonesia</button>
-                            <button onclick="triggerWrong()" class="w-full text-left p-3 rounded bg-slate-800 hover:bg-red-900/80 border border-slate-600 transition duration-300 text-sm text-white shadow-lg transform hover:-translate-y-1">C. Pemikiran satu tokoh tunggal</button>
+                        <div class="space-y-2">
+                            <button onclick="triggerWrong()" class="w-full text-left p-2 rounded bg-slate-800 hover:bg-red-900/80 border border-slate-600 transition duration-300 text-xs text-white shadow-lg transform hover:-translate-y-1">A. Ideologi Asing & Eksternal</button>
+                            <button onclick="triggerCorrect()" class="w-full text-left p-2 rounded bg-slate-800 hover:bg-emerald-900/80 border border-slate-600 transition duration-300 text-xs text-white shadow-lg transform hover:-translate-y-1">B. Nilai budaya, adat, & agama bangsa Indonesia</button>
+                            <button onclick="triggerWrong()" class="w-full text-left p-2 rounded bg-slate-800 hover:bg-red-900/80 border border-slate-600 transition duration-300 text-xs text-white shadow-lg transform hover:-translate-y-1">C. Pemikiran satu tokoh tunggal</button>
                         </div>
                         
-                        <div id="quiz-result" class="mt-4 text-center font-bold text-lg hidden"></div>
+                        <div id="quiz-result" class="mt-2 text-center font-bold text-sm hidden"></div>
                     </div>
 
-                    <!-- Video Asli Embed HTML5 -->
-                    <div class="text-center space-y-4">
+                    <div class="text-center space-y-3">
                         <div class="relative w-full rounded-xl overflow-hidden border-2 border-[#D4AF37] shadow-2xl">
-                            <div class="absolute top-2 left-2 bg-black/80 text-[#D4AF37] text-xs font-bold px-2 py-1 rounded z-10 tracking-widest"><i class="fa-solid fa-play mr-1"></i> VIDEO EMBED ASLI</div>
-                            <!-- Real HTML5 Video dari Pixabay (Bukan Link Youtube!) -->
-                            <video src="./assets/video.mp4" controls autoplay loop muted class="w-full h-64 object-cover"></video>
+                            <div class="absolute top-2 left-2 bg-black/80 text-[#D4AF37] text-xs font-bold px-2 py-1 rounded z-10 tracking-widest"><i class="fa-solid fa-play mr-1"></i> VIDEO LOKAL ASLI</div>
+                            <video src="./assets/video.mp4" controls autoplay loop muted class="w-full h-56 object-cover"></video>
                         </div>
-                        <p class="text-xs text-gray-400 bg-slate-800 py-2 rounded-lg border border-slate-700"><i class="fa-solid fa-circle-info mr-2 text-blue-400"></i>Ini adalah video MP4 asli yang di-embed langsung ke dalam slide, persis seperti presentasi profesional sungguhan.</p>
+                        <p class="text-xs text-gray-400 bg-slate-800 py-2 rounded-lg border border-slate-700"><i class="fa-solid fa-circle-info mr-2 text-blue-400"></i>Video diputar langsung dari server GitHub Pages. Anti-block / Anti-403.</p>
                     </div>
 
                 </div>
@@ -203,25 +205,22 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <script>
-        // Inisialisasi Reveal.js untuk efek MORPH (Magic Move) yang sesungguhnya
         Reveal.initialize({
             hash: true,
             controls: true,
             progress: true,
             center: true,
-            transition: 'slide', // Transisi default
-            autoAnimateEasing: 'cubic-bezier(0.4, 0.0, 0.2, 1)', // Efek Morphing halus (Magic Move)
-            autoAnimateDuration: 1.2,
-            autoAnimateUnmatched: false
+            transition: 'none', // Use none to let auto-animate handle EVERYTHING smoothly
+            autoAnimateEasing: 'cubic-bezier(0.4, 0.0, 0.2, 1)', 
+            autoAnimateDuration: 1.0,
+            autoAnimateUnmatched: true // Fades in unmatched elements gracefully
         });
 
-        // Logika Kuis Interaktif
         function triggerCorrect() {
             const res = document.getElementById('quiz-result');
-            res.innerHTML = '<i class="fa-solid fa-check-circle text-emerald-500 mr-2"></i>Tepat Sekali! Kuis Bekerja Interaktif! (100 Poin)';
-            res.className = 'mt-4 text-center font-bold text-lg text-emerald-400 block p-3 bg-emerald-900/30 rounded-lg border border-emerald-500/50';
+            res.innerHTML = '<i class="fa-solid fa-check-circle text-emerald-500 mr-2"></i>Tepat Sekali! Kuis Bekerja! (100 Poin)';
+            res.className = 'mt-2 text-center font-bold text-sm text-emerald-400 block p-2 bg-emerald-900/30 rounded-lg border border-emerald-500/50';
             
-            // Efek Confetti (Petasan Digital)
             var duration = 3000;
             var end = Date.now() + duration;
             (function frame() {
@@ -234,7 +233,7 @@
         function triggerWrong() {
             const res = document.getElementById('quiz-result');
             res.innerHTML = '<i class="fa-solid fa-xmark-circle text-red-500 mr-2"></i>Salah, coba klik yang lain!';
-            res.className = 'mt-4 text-center font-bold text-lg text-red-400 block animate-bounce p-3 bg-red-900/30 rounded-lg border border-red-500/50';
+            res.className = 'mt-2 text-center font-bold text-sm text-red-400 block animate-bounce p-2 bg-red-900/30 rounded-lg border border-red-500/50';
         }
     </script>
 </body>
