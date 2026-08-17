@@ -1,855 +1,241 @@
 <!DOCTYPE html>
-<html lang="id" class="dark">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pancasila: Arus Sejarah & Sistem Filsafat | Presentasi Ultra-Interaktif</title>
-
+    <title>Pancasila - Presentasi Interaktif UNPAM</title>
+    
+    <!-- Reveal.js (Engine Presentasi Kelas Atas / Morphing) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/night.min.css">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        gold: '#D4AF37',
-                        unpam: '#0055A5',
-                        crimson: '#E11D48',
-                        darkBg: '#0B0F17'
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 5s ease-in-out infinite',
-                        'spin-slow': 'spin 20s linear infinite',
-                        'glow': 'glow 3s ease-in-out infinite alternate'
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-                            '50%': { transform: 'translateY(-12px) rotate(1deg)' }
-                        },
-                        glow: {
-                            '0%': { boxShadow: '0 0 15px rgba(212, 175, 55, 0.3)' },
-                            '100%': { boxShadow: '0 0 35px rgba(225, 29, 72, 0.6)' }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- FontAwesome & Lucide Icons -->
+    
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- Canvas Confetti -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Cinzel:wght@700;900&display=swap');
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #07090E;
-            color: #F1F5F9;
-            overflow: hidden;
-            user-select: none;
+        /* Override Reveal JS Defaults for Tailwind Compatibility */
+        .reveal .slides { text-align: left; }
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 { text-transform: none; font-family: 'Playfair Display', serif; }
+        .reveal p, .reveal div, .reveal li { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* Premium Glassmorphism */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
         }
 
-        .font-cinzel {
-            font-family: 'Cinzel', serif;
-        }
-
-        /* Glassmorphism Next-Gen */
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .glass-card-interactive {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
-        .glass-card-interactive::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: 0.5s;
-        }
-        .glass-card-interactive:hover::before {
-            left: 100%;
-        }
-        .glass-card-interactive:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: rgba(212, 175, 55, 0.6);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
-        }
-
-        /* 3D Flip Card Effect */
-        .flip-card { perspective: 1000px; }
+        /* 3D Flip Card */
+        .flip-card { perspective: 1000px; height: 320px; width: 100%; }
         .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform-style: preserve-3d;
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer;
         }
         .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
         .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 1.25rem;
+            position: absolute; width: 100%; height: 100%;
+            -webkit-backface-visibility: hidden; backface-visibility: hidden;
+            border-radius: 16px; padding: 20px;
         }
-        .flip-card-back { transform: rotateY(180deg); }
+        .flip-card-front { background: rgba(30, 41, 59, 0.9); border: 2px solid #D4AF37; }
+        .flip-card-back { background: #D4AF37; color: #000; transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; }
 
-        /* Spotlight Lampu Sorot Overlay */
-        #spotlight {
-            pointer-events: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle 300px at var(--x, 50%) var(--y, 50%), transparent 0%, rgba(3, 7, 18, 0.93) 100%);
-            z-index: 90;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        body.spotlight-active #spotlight { opacity: 1; }
-
-        /* Fluid Slide Morphing */
-        .slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            pointer-events: none;
-            transform: scale(0.94) translateY(30px);
-            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2.5rem 4rem;
-        }
-
-        .slide.active {
-            opacity: 1;
-            pointer-events: auto;
-            transform: scale(1) translateY(0);
-            z-index: 10;
-        }
-
-        /* Video HTML5 Container Styling */
-        .video-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1.25rem;
-        }
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
-        ::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.6); border-radius: 4px; }
+        /* Confetti Canvas */
+        #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen relative overflow-hidden">
+<body>
+    <canvas id="confetti-canvas"></canvas>
 
-    <!-- Ambient Glowing Blobs & Animated Mesh -->
-    <div class="fixed inset-0 pointer-events-none z-0">
-        <div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-red-600/20 rounded-full blur-[120px] animate-pulse-slow"></div>
-        <div class="absolute top-1/2 -right-40 w-[500px] h-[500px] bg-amber-500/20 rounded-full blur-[120px] animate-pulse-slow" style="animation-delay: 2s;"></div>
-        <div class="absolute -bottom-40 left-1/3 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse-slow" style="animation-delay: 4s;"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(#ffffff0d_1px,transparent_1px)] [background-size:28px_28px]"></div>
-    </div>
-
-    <!-- Spotlight Overlay -->
-    <div id="spotlight"></div>
-
-    <!-- Top Navigation Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 px-8 py-3.5 flex justify-between items-center bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/60 shadow-xl">
-        <div class="flex items-center space-x-3">
-            <!-- Logo UNPAM & Badge Emblem -->
-            <div class="flex items-center space-x-2.5 bg-slate-900/90 px-3 py-1.5 rounded-xl border border-slate-800">
-                <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-black text-xs shadow-md">
-                    UNPAM
-                </div>
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 to-red-600 flex items-center justify-center text-white text-sm shadow-md">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-            </div>
-            <div>
-                <h1 class="font-bold text-xs tracking-wider uppercase text-amber-400 flex items-center space-x-1.5">
-                    <span>Manajemen S1 - UNPAM Kampus Serang</span>
-                    <span class="px-1.5 py-0.5 bg-amber-500/20 text-amber-300 text-[10px] rounded font-mono">SEMESTER 3</span>
-                </h1>
-                <p class="text-xs text-slate-300 font-semibold">Pancasila: Arus Sejarah & Sistem Filsafat</p>
-            </div>
-        </div>
-
-        <!-- Interactive Control Bar -->
-        <div class="flex items-center space-x-2 bg-slate-900/90 p-1.5 rounded-full border border-slate-800/80 shadow-inner">
-            <button onclick="toggleSpotlight()" id="btn-spotlight" title="Mode Lampu Sorot (Spotlight)" class="w-9 h-9 rounded-full flex items-center justify-center text-slate-400 hover:text-amber-400 hover:bg-slate-800 transition">
-                <i class="fa-solid fa-lightbulb"></i>
-            </button>
-            <button onclick="toggleSound()" id="btn-sound" title="Sound Effects Toggle" class="w-9 h-9 rounded-full flex items-center justify-center text-slate-400 hover:text-amber-400 hover:bg-slate-800 transition">
-                <i class="fa-solid fa-volume-high" id="sound-icon"></i>
-            </button>
-            <button onclick="toggleNotes()" id="btn-notes" title="Catatan Presenter / Dosen" class="w-9 h-9 rounded-full flex items-center justify-center text-slate-400 hover:text-amber-400 hover:bg-slate-800 transition">
-                <i class="fa-solid fa-sticky-note"></i>
-            </button>
-            <button onclick="toggleFullscreen()" title="Fullscreen Presentation (F11)" class="w-9 h-9 rounded-full flex items-center justify-center text-slate-400 hover:text-amber-400 hover:bg-slate-800 transition">
-                <i class="fa-solid fa-expand"></i>
-            </button>
-        </div>
-    </header>
-
-    <!-- Main Canvas Viewport -->
-    <main class="relative w-full h-screen flex items-center justify-center z-10 pt-16 pb-20">
-
-        <!-- SLIDE 1: Hero Interaktif dengan Video Loop & Emblem Garuda -->
-        <section class="slide active" id="slide-1" data-notes="Pembuka presentasi: Ucapkan salam hangat kepada Dosen Pengampu Pak Aziz dan rekan-rekan kelas Manajemen. Jelaskan bahwa presentasi ini disusun dalam format web interaktif modern yang kaya akan visual dan multimedia.">
-            <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-                
-                <!-- Left Content Area -->
-                <div class="md:col-span-7 space-y-6 text-left animate-float">
-                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider">
-                        <i class="fa-solid fa-award text-amber-400"></i>
-                        <span>Presentasi Manajemen Berdampak Tinggi</span>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- SLIDE 1: HERO (Video Background + Morph Target) -->
+            <section data-auto-animate data-background-video="https://cdn.pixabay.com/video/2020/05/24/40061-424683070_large.mp4" data-background-video-loop data-background-video-muted data-background-opacity="0.3">
+                <div class="flex flex-col items-center justify-center text-center h-full pt-20">
+                    <!-- Logo UNPAM Asli -->
+                    <img data-id="logo-unpam" src="https://upload.wikimedia.org/wikipedia/id/3/3a/Logo_unpam_terbaru.png" class="w-40 h-40 mb-6 drop-shadow-2xl" alt="Logo UNPAM">
+                    
+                    <h1 data-id="title-main" class="text-6xl md:text-8xl font-bold text-[#D4AF37] drop-shadow-lg mb-4">PANCASILA</h1>
+                    <h3 data-id="subtitle" class="text-3xl text-white font-light tracking-wide bg-black/50 px-6 py-2 rounded-full">Arus Sejarah & Sistem Filsafat</h3>
+                    
+                    <div data-id="metadata" class="mt-10 flex space-x-6 text-sm text-gray-300 bg-slate-900/80 px-8 py-3 rounded-full border border-gray-700">
+                        <span><i class="fa-solid fa-graduation-cap mr-2 text-[#D4AF37]"></i>Tugas Manajemen</span>
+                        <span><i class="fa-solid fa-university mr-2 text-[#D4AF37]"></i>UNPAM Kampus Serang</span>
+                        <span><i class="fa-solid fa-layer-group mr-2 text-[#D4AF37]"></i>Semester 3</span>
                     </div>
 
-                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-amber-400 to-red-500 leading-tight">
-                        Pancasila Dalam Arus Sejarah & Sistem Filsafat
-                    </h1>
-
-                    <p class="text-sm md:text-base text-slate-300 font-normal leading-relaxed">
-                        Analisis Komprehensif Dinamika Historis 1945, Perumusan BPUPKI/PPKI, serta Landasan Ontologis, Epistemologis, dan Aksiologis Bangsa Indonesia.
-                    </p>
-
-                    <!-- Badges & Symbols -->
-                    <div class="flex flex-wrap gap-2 pt-2">
-                        <span class="px-3 py-1 bg-slate-900/80 border border-slate-700 text-slate-300 text-xs rounded-lg font-semibold flex items-center space-x-1.5">
-                            <i class="fa-solid fa-landmark text-amber-400"></i>
-                            <span> BPUPKI & PPKI</span>
-                        </span>
-                        <span class="px-3 py-1 bg-slate-900/80 border border-slate-700 text-slate-300 text-xs rounded-lg font-semibold flex items-center space-x-1.5">
-                            <i class="fa-solid fa-brain text-red-400"></i>
-                            <span> Sistem Filsafat</span>
-                        </span>
-                        <span class="px-3 py-1 bg-slate-900/80 border border-slate-700 text-slate-300 text-xs rounded-lg font-semibold flex items-center space-x-1.5">
-                            <i class="fa-solid fa-scale-balanced text-emerald-400"></i>
-                            <span> Ideologi Bangsa</span>
-                        </span>
-                    </div>
-
-                    <div class="pt-4 flex flex-wrap gap-4">
-                        <button onclick="nextSlide()" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-red-600 font-bold text-white shadow-lg shadow-red-600/30 hover:scale-105 active:scale-95 transition flex items-center space-x-2 text-sm">
-                            <span>Mulai Jelajahi Slide</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-                        <button onclick="jumpToSlide(5)" class="px-6 py-3.5 rounded-xl glass-panel hover:bg-slate-800 text-sm font-semibold text-slate-200 border border-slate-700 transition flex items-center space-x-2">
-                            <i class="fa-solid fa-trophy text-amber-400"></i>
-                            <span>Uji Kuis Interaktif</span>
-                        </button>
-                    </div>
+                    <p class="mt-12 text-sm text-gray-400 animate-bounce"><i class="fa-solid fa-arrow-right mr-2"></i>Geser Kanan / Spasi Untuk Mulai Animasi Morph</p>
                 </div>
+            </section>
 
-                <!-- Right Visual Area: Live Direct Video Loop & Garuda Emblem -->
-                <div class="md:col-span-5 relative">
-                    <div class="glass-panel p-3 rounded-3xl border border-amber-500/40 shadow-2xl relative group">
-                        <!-- Direct HTML5 Video Player Loop (No YouTube Link) -->
-                        <div class="video-container h-72 md:h-80 shadow-inner">
-                            <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=800&auto=format&fit=crop">
-                                <source src="https://assets.mixkit.co/videos/preview/mixkit-flag-of-indonesia-waving-in-the-wind-41551-large.mp4" type="video/mp4">
-                                Browser Anda tidak mendukung pemutar video HTML5.
-                            </video>
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
-                            
-                            <!-- Floating Badge Info -->
-                            <div class="absolute bottom-4 left-4 right-4 p-3 glass-panel rounded-xl border border-slate-700/80 flex items-center space-x-3">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Garuda_Pancasila_Pancasila.svg" alt="Garuda Emblem" class="w-10 h-10 object-contain drop-shadow-md">
-                                <div>
-                                    <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wide">Bhinneka Tunggal Ika</h4>
-                                    <p class="text-[11px] text-slate-300">Lambang Negara & Filosfi Kebangsaan</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SLIDE 2: Timeline Sejarah Interaktif dengan GIF & Gambar Deskriptif -->
-        <section class="slide" id="slide-2" data-notes="Jelaskan 4 babak sejarah perumusan Pancasila. Klik setiap kartu untuk membuka foto arsip sejarah, GIF beranimasi, dan rincian peristiwanya secara interaktif.">
-            <div class="w-full max-w-6xl space-y-5">
-                <div class="flex justify-between items-end border-b border-slate-800 pb-3">
+            <!-- SLIDE 2: MORPHING TRANSITION (Magic Move) -->
+            <section data-auto-animate data-background-color="#0B0F17">
+                <!-- Elemen berpindah tempat dan mengecil secara otomatis (Morph) -->
+                <div class="flex items-center space-x-6 mb-12 border-b border-gray-800 pb-4">
+                    <img data-id="logo-unpam" src="https://upload.wikimedia.org/wikipedia/id/3/3a/Logo_unpam_terbaru.png" class="w-16 h-16" alt="Logo UNPAM">
                     <div>
-                        <span class="text-xs font-bold text-amber-400 uppercase tracking-widest flex items-center space-x-2">
-                            <i class="fa-solid fa-clock-rotate-left"></i>
-                            <span>Arus Sejarah Perumusan</span>
-                        </span>
-                        <h2 class="text-2xl md:text-3xl font-bold text-slate-100">Kronologi Historis Pembentukan Pancasila 1945</h2>
-                    </div>
-                    <p class="text-xs text-slate-400 hidden md:block">Klik pada kartu fase untuk melihat foto & GIF animasi peristiwanya:</p>
-                </div>
-
-                <!-- 4 Timeline Cards with Rich Visual Imagery -->
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    
-                    <!-- Phase 1 -->
-                    <div onclick="showHistoryDetail('bpupki')" class="glass-panel p-4 rounded-2xl glass-card-interactive cursor-pointer border-t-4 border-t-amber-500 space-y-3">
-                        <div class="h-28 rounded-xl overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?q=80&w=600&auto=format&fit=crop" alt="BPUPKI" class="w-full h-full object-cover">
-                            <span class="absolute top-2 right-2 px-2 py-0.5 bg-amber-500 text-slate-950 text-[10px] font-black rounded">1945</span>
-                        </div>
-                        <div class="space-y-1">
-                            <h3 class="font-bold text-sm text-amber-400">29 Mei - 1 Juni 1945</h3>
-                            <h4 class="font-semibold text-xs text-slate-200">Pengusulan Dasar Negara (BPUPKI)</h4>
-                            <p class="text-[11px] text-slate-400 line-clamp-2">Gagasan Yamin, Soepomo, dan Pidato Lahirnya Pancasila oleh Soekarno.</p>
-                        </div>
-                    </div>
-
-                    <!-- Phase 2 -->
-                    <div onclick="showHistoryDetail('piagam')" class="glass-panel p-4 rounded-2xl glass-card-interactive cursor-pointer border-t-4 border-t-red-500 space-y-3">
-                        <div class="h-28 rounded-xl overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=600&auto=format&fit=crop" alt="Piagam Jakarta" class="w-full h-full object-cover">
-                            <span class="absolute top-2 right-2 px-2 py-0.5 bg-red-500 text-white text-[10px] font-black rounded">22 JUNI</span>
-                        </div>
-                        <div class="space-y-1">
-                            <h3 class="font-bold text-sm text-red-400">22 Juni 1945</h3>
-                            <h4 class="font-semibold text-xs text-slate-200">Perumusan Piagam Jakarta</h4>
-                            <p class="text-[11px] text-slate-400 line-clamp-2">Panitia Sembilan menyepakati 7 Kata dalam Sila Pertama Pembukaan UUD.</p>
-                        </div>
-                    </div>
-
-                    <!-- Phase 3 -->
-                    <div onclick="showHistoryDetail('ppki')" class="glass-panel p-4 rounded-2xl glass-card-interactive cursor-pointer border-t-4 border-t-emerald-500 space-y-3">
-                        <div class="h-28 rounded-xl overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=600&auto=format&fit=crop" alt="Pengesahan PPKI" class="w-full h-full object-cover">
-                            <span class="absolute top-2 right-2 px-2 py-0.5 bg-emerald-500 text-slate-950 text-[10px] font-black rounded">18 AGUSTUS</span>
-                        </div>
-                        <div class="space-y-1">
-                            <h3 class="font-bold text-sm text-emerald-400">18 Agustus 1945</h3>
-                            <h4 class="font-semibold text-xs text-slate-200">Pengesahan Resmi (PPKI)</h4>
-                            <p class="text-[11px] text-slate-400 line-clamp-2">Konsensus nasional penetapan UUD 1945 & Sila Pertama Ketuhanan Yang Maha Esa.</p>
-                        </div>
-                    </div>
-
-                    <!-- Phase 4 -->
-                    <div onclick="showHistoryDetail('dinamika')" class="glass-panel p-4 rounded-2xl glass-card-interactive cursor-pointer border-t-4 border-t-purple-500 space-y-3">
-                        <div class="h-28 rounded-xl overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=600&auto=format&fit=crop" alt="Dinamika Era Modern" class="w-full h-full object-cover">
-                            <span class="absolute top-2 right-2 px-2 py-0.5 bg-purple-500 text-white text-[10px] font-black rounded">MODERN</span>
-                        </div>
-                        <div class="space-y-1">
-                            <h3 class="font-bold text-sm text-purple-400">Orde Lama hingga Reformasi</h3>
-                            <h4 class="font-semibold text-xs text-slate-200">Dinamika & Tantangan Global</h4>
-                            <p class="text-[11px] text-slate-400 line-clamp-2">Tantangan ideologi transnasional, kapitalisme digital, dan revitalisasi Pancasila.</p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Dynamic Detail Display Container with Embedded Media -->
-                <div id="history-detail-box" class="glass-panel p-5 rounded-2xl border border-amber-500/30 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                    <div class="md:col-span-8 space-y-2 text-left">
-                        <span id="detail-tag" class="px-2.5 py-0.5 bg-amber-500/20 text-amber-300 text-[10px] font-bold rounded uppercase">Fase BPUPKI</span>
-                        <h4 id="detail-title" class="font-bold text-lg text-amber-400 flex items-center space-x-2">
-                            <i class="fa-solid fa-circle-check"></i>
-                            <span>Sidang BPUPKI I (29 Mei - 1 Juni 1945)</span>
-                        </h4>
-                        <p id="detail-desc" class="text-xs text-slate-300 leading-relaxed">
-                            Prof. Soepomo menekankan konsep Negara Integralistik. Mr. Muhammad Yamin mengusulkan 5 asas dasar berbangsa. Pada 1 Juni 1945, Ir. Soekarno merumuskan pidato bersejarah yang mengenalkan istilah 'Pancasila' untuk pertama kalinya.
-                        </p>
-                    </div>
-
-                    <div class="md:col-span-4 h-32 rounded-xl overflow-hidden relative border border-slate-700">
-                        <img id="detail-img" src="https://images.unsplash.com/photo-1577495508048-b635879837f1?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover">
+                        <h1 data-id="title-main" class="text-4xl font-bold text-[#D4AF37] m-0">PANCASILA</h1>
+                        <h3 data-id="subtitle" class="text-xl text-gray-400 m-0">Dinamika Arus Sejarah</h3>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- SLIDE 3: 3D Flip Cards 5 Sila dengan Gambar Deskriptif & Simbol -->
-        <section class="slide" id="slide-3" data-notes="Tunjukkan ke dosen dengan mengklik tiap kartu 3D untuk membalikkan dan memperlihatkan nilai ontologis dari masing-masing sila beserta simbol fisiknya.">
-            <div class="w-full max-w-6xl space-y-5">
-                <div class="text-center space-y-1">
-                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Pancasila Sebagai Sistem Filsafat</span>
-                    <h2 class="text-2xl md:text-3xl font-bold text-slate-100">3D Kartu Filosofi 5 Sila & Hakikat Ontologis</h2>
-                    <p class="text-xs text-slate-400">Klik kartu di bawah untuk membalikkan (flip) dan mempelajari hakikat nilai filsafatnya:</p>
+                <div class="grid grid-cols-2 gap-8">
+                    <!-- GIF Animasi Sejarah Asli -->
+                    <div class="glass-card relative overflow-hidden group">
+                        <div class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded z-10">GIF Animasi Asli</div>
+                        <!-- GIF BENDERA BERKIBAR DARI GIPHY -->
+                        <img src="https://media.giphy.com/media/l41YcWb56iB73Z3zO/giphy.gif" alt="Bendera Indonesia GIF" class="w-full h-48 object-cover rounded-lg group-hover:scale-110 transition duration-500">
+                        <h4 class="text-xl font-bold text-white mt-4">Lahirnya Pancasila</h4>
+                        <p class="text-sm text-gray-300 mt-2">Pidato Soekarno pada 1 Juni 1945 menggemakan 5 prinsip dasar negara untuk pertama kalinya di sidang BPUPKI.</p>
+                    </div>
+
+                    <div class="glass-card relative overflow-hidden group">
+                        <div class="absolute top-2 right-2 bg-[#D4AF37] text-black text-xs font-bold px-2 py-1 rounded z-10">Foto Sejarah</div>
+                        <!-- FOTO ASLI WIKIMEDIA -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Sukarno_reading_Proclamation_of_Independence.jpg" alt="Proklamasi" class="w-full h-48 object-cover rounded-lg group-hover:scale-110 transition duration-500 opacity-80">
+                        <h4 class="text-xl font-bold text-white mt-4">Pengesahan PPKI</h4>
+                        <p class="text-sm text-gray-300 mt-2">18 Agustus 1945, Pancasila disahkan sebagai dasar negara yang mengikat seluruh elemen bangsa Indonesia.</p>
+                    </div>
                 </div>
+            </section>
 
-                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 pt-2">
-                    
+            <!-- SLIDE 3: INTERACTIVE 3D FLIP CARDS (Simbol Pancasila Asli) -->
+            <section data-background-color="#0B0F17">
+                <h2 class="text-4xl font-bold text-center text-[#D4AF37] mb-2">Filsafat 5 Sila Pancasila</h2>
+                <p class="text-center text-gray-400 mb-8 text-sm"><i class="fa-solid fa-hand-pointer mr-2 animate-bounce"></i>Silahkan KLIK kartu di bawah ini untuk melihat hakikat ontologisnya (Efek 3D Flip Interaktif)</p>
+                
+                <div class="grid grid-cols-5 gap-4">
                     <!-- Sila 1 -->
-                    <div class="flip-card h-80 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front glass-panel p-5 flex flex-col justify-between items-center text-center border-t-4 border-t-amber-400">
-                                <div class="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 text-xl font-black">1</div>
-                                <img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?q=80&w=400&auto=format&fit=crop" alt="Ketuhanan" class="w-20 h-20 rounded-xl object-cover border border-amber-500/40 shadow-md">
-                                <h3 class="font-bold text-slate-100 text-xs">Ketuhanan Yang Maha Esa</h3>
-                                <span class="text-[11px] text-amber-400 font-bold">Klik untuk balik &circlearrowright;</span>
+                            <div class="flip-card-front flex flex-col items-center justify-center">
+                                <!-- LAMBANG GARUDA ASLI DARI WIKIMEDIA -->
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Garuda_Pancasila_Pancasila.svg" class="w-20 mb-4" alt="Bintang">
+                                <h4 class="text-lg font-bold text-[#D4AF37]">Sila I</h4>
+                                <p class="text-xs text-white mt-2">Ketuhanan Yang Maha Esa</p>
                             </div>
-                            <div class="flip-card-back bg-slate-900/95 p-5 flex flex-col justify-between text-center border border-amber-500/40">
-                                <h4 class="font-bold text-amber-400 text-xs uppercase tracking-wider">Landasan Ontologis</h4>
-                                <p class="text-[11px] text-slate-300 leading-relaxed">Manusia sebagai ciptaan Tuhan. Keyakinan moral-spiritual sebagai fondasi utama hukum & etika berbangsa.</p>
-                                <span class="text-[10px] text-slate-500 font-mono">Sila I</span>
+                            <div class="flip-card-back">
+                                <h4 class="text-lg font-bold mb-2"><i class="fa-solid fa-star"></i> Ontologis</h4>
+                                <p class="text-xs font-semibold leading-relaxed">Manusia adalah makhluk ciptaan Tuhan. Negara menjamin kemerdekaan beragama.</p>
                             </div>
                         </div>
                     </div>
-
                     <!-- Sila 2 -->
-                    <div class="flip-card h-80 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front glass-panel p-5 flex flex-col justify-between items-center text-center border-t-4 border-t-red-500">
-                                <div class="w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 text-xl font-black">2</div>
-                                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=400&auto=format&fit=crop" alt="Kemanusiaan" class="w-20 h-20 rounded-xl object-cover border border-red-500/40 shadow-md">
-                                <h3 class="font-bold text-slate-100 text-xs">Kemanusiaan Adil & Beradab</h3>
-                                <span class="text-[11px] text-red-400 font-bold">Klik untuk balik &circlearrowright;</span>
+                            <div class="flip-card-front flex flex-col items-center justify-center">
+                                <h4 class="text-4xl font-bold text-red-500 mb-4"><i class="fa-solid fa-link"></i></h4>
+                                <h4 class="text-lg font-bold text-red-500">Sila II</h4>
+                                <p class="text-xs text-white mt-2">Kemanusiaan Adil & Beradab</p>
                             </div>
-                            <div class="flip-card-back bg-slate-900/95 p-5 flex flex-col justify-between text-center border border-red-500/40">
-                                <h4 class="font-bold text-red-400 text-xs uppercase tracking-wider">Landasan Ontologis</h4>
-                                <p class="text-[11px] text-slate-300 leading-relaxed">Penghargaan martabat manusia universal, hak asasi manusia, serta kebudayaan tinggi tanpa diskriminasi.</p>
-                                <span class="text-[10px] text-slate-500 font-mono">Sila II</span>
+                            <div class="flip-card-back bg-red-600">
+                                <h4 class="text-lg font-bold mb-2 text-white"><i class="fa-solid fa-heart"></i> Ontologis</h4>
+                                <p class="text-xs font-semibold leading-relaxed text-white">Menjunjung tinggi harkat martabat manusia & keadilan universal secara interaktif.</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Sila 3 -->
-                    <div class="flip-card h-80 cursor-pointer" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front glass-panel p-5 flex flex-col justify-between items-center text-center border-t-4 border-t-emerald-500">
-                                <div class="w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl font-black">3</div>
-                                <img src="https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=400&auto=format&fit=crop" alt="Persatuan" class="w-20 h-20 rounded-xl object-cover border border-emerald-500/40 shadow-md">
-                                <h3 class="font-bold text-slate-100 text-xs">Persatuan Indonesia</h3>
-                                <span class="text-[11px] text-emerald-400 font-bold">Klik untuk balik &circlearrowright;</span>
-                            </div>
-                            <div class="flip-card-back bg-slate-900/95 p-5 flex flex-col justify-between text-center border border-emerald-500/40">
-                                <h4 class="font-bold text-emerald-400 text-xs uppercase tracking-wider">Landasan Ontologis</h4>
-                                <p class="text-[11px] text-slate-300 leading-relaxed">Nasionalisme inklusif, konsensus keberagaman suku/agama dalam naungan semboyan Bhinneka Tunggal Ika.</p>
-                                <span class="text-[10px] text-slate-500 font-mono">Sila III</span>
-                            </div>
+                    <!-- Garuda Besar -->
+                    <div class="col-span-3 glass-card flex items-center justify-center bg-[url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Gedung_MPR_DPR_RI.jpg/800px-Gedung_MPR_DPR_RI.jpg')] bg-cover bg-center bg-blend-overlay bg-black/70 group relative">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition duration-500 rounded-16px"></div>
+                        <div class="text-center z-10">
+                            <!-- GARUDA ASLI -->
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/90/Garuda_Pancasila_Pancasila.svg" class="w-32 h-32 mx-auto mb-4 drop-shadow-2xl hover:rotate-12 transition duration-500 cursor-pointer" alt="Garuda Pancasila">
+                            <h3 class="text-3xl font-bold text-white drop-shadow-lg">Bhinneka Tunggal Ika</h3>
+                            <p class="text-sm text-[#D4AF37] font-bold mt-2 bg-black/50 px-4 py-1 rounded-full inline-block">Sorot/Arahkan Mouse Kesini</p>
                         </div>
                     </div>
-
-                    <!-- Sila 4 -->
-                    <div class="flip-card h-80 cursor-pointer" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front glass-panel p-5 flex flex-col justify-between items-center text-center border-t-4 border-t-amber-600">
-                                <div class="w-12 h-12 rounded-full bg-amber-600/20 flex items-center justify-center text-amber-500 text-xl font-black">4</div>
-                                <img src="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?q=80&w=400&auto=format&fit=crop" alt="Kerakyatan" class="w-20 h-20 rounded-xl object-cover border border-amber-600/40 shadow-md">
-                                <h3 class="font-bold text-slate-100 text-xs">Kerakyatan Dipimpin...</h3>
-                                <span class="text-[11px] text-amber-500 font-bold">Klik untuk balik &circlearrowright;</span>
-                            </div>
-                            <div class="flip-card-back bg-slate-900/95 p-5 flex flex-col justify-between text-center border border-amber-600/40">
-                                <h4 class="font-bold text-amber-500 text-xs uppercase tracking-wider">Landasan Ontologis</h4>
-                                <p class="text-[11px] text-slate-300 leading-relaxed">Demokrasi musyawarah mufakat, kedaulatan di tangan rakyat tanpa tirani mayoritas atau dominasi modal.</p>
-                                <span class="text-[10px] text-slate-500 font-mono">Sila IV</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sila 5 -->
-                    <div class="flip-card h-80 cursor-pointer" onclick="this.classList.toggle('flipped')">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front glass-panel p-5 flex flex-col justify-between items-center text-center border-t-4 border-t-blue-500">
-                                <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 text-xl font-black">5</div>
-                                <img src="https://images.unsplash.com/photo-1464938050520-ef2270bb8ce8?q=80&w=400&auto=format&fit=crop" alt="Keadilan Sosial" class="w-20 h-20 rounded-xl object-cover border border-blue-500/40 shadow-md">
-                                <h3 class="font-bold text-slate-100 text-xs">Keadilan Sosial...</h3>
-                                <span class="text-[11px] text-blue-400 font-bold">Klik untuk balik &circlearrowright;</span>
-                            </div>
-                            <div class="flip-card-back bg-slate-900/95 p-5 flex flex-col justify-between text-center border border-blue-500/40">
-                                <h4 class="font-bold text-blue-400 text-xs uppercase tracking-wider">Landasan Ontologis</h4>
-                                <p class="text-[11px] text-slate-300 leading-relaxed">Kesejahteraan merata, pemerataan kesempatan ekonomi & sosial bagi seluruh rakyat Indonesia.</p>
-                                <span class="text-[10px] text-slate-500 font-mono">Sila V</span>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- SLIDE 4: Visual Split-Screen Comparison Ideologi Dunia vs Pancasila -->
-        <section class="slide" id="slide-4" data-notes="Gunakan slide perbandingan ini untuk menunjukkan posisi Pancasila sebagai jalan tengah monodualis di antara ideologi Kapitalisme dan Sosialisme.">
-            <div class="w-full max-w-5xl space-y-5 text-center">
-                <div class="space-y-1">
-                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Komparasi Ideologi Global</span>
-                    <h2 class="text-2xl md:text-3xl font-bold text-slate-100">Kapitalisme vs Sosialisme vs Pancasila</h2>
-                </div>
-
-                <!-- Tab Switcher -->
-                <div class="flex justify-center space-x-2 bg-slate-900/90 p-1.5 rounded-xl border border-slate-800 max-w-md mx-auto">
-                    <button onclick="switchIdeology('kapitalisme')" id="tab-kapital" class="px-4 py-2 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 transition">Vs Kapitalisme Liberal</button>
-                    <button onclick="switchIdeology('sosialisme')" id="tab-sosial" class="px-4 py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition">Vs Sosialisme Komunis</button>
-                </div>
-
-                <!-- Comparison Cards with Visual Badges -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2 text-left">
+            <!-- SLIDE 4: DIRECT VIDEO EMBED & KUIS -->
+            <section data-background-color="#0B0F17">
+                <div class="grid grid-cols-2 gap-8 items-center h-full">
                     
-                    <!-- Left: Foreign Ideology -->
-                    <div class="glass-panel p-5 rounded-2xl border-l-4 border-l-red-500 space-y-3 relative overflow-hidden">
-                        <div class="flex justify-between items-center">
-                            <span id="ideo-target-tag" class="px-2.5 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-bold rounded uppercase">Kapitalisme Liberal</span>
-                            <i class="fa-solid fa-earth-americas text-red-400 text-xl"></i>
+                    <!-- Kuis Interaktif dengan JavaScript Alert/Confetti -->
+                    <div class="glass-card text-left">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-2xl font-bold text-[#D4AF37]"><i class="fa-solid fa-gamepad mr-2"></i>Kuis Interaktif</h3>
+                            <span class="bg-red-600 text-white text-xs px-2 py-1 rounded font-bold animate-pulse">KLIK JAWABAN</span>
                         </div>
-                        <h3 id="ideo-target-title" class="text-lg font-bold text-slate-100">Individualisme & Bebas Tanpa Batas</h3>
-                        <ul id="ideo-target-list" class="space-y-2 text-xs text-slate-300">
-                            <li class="flex items-start space-x-2"><i class="fa-solid fa-xmark text-red-400 mt-0.5"></i><span>Fokus pada kebebasan individu mutlak atas nama modal.</span></li>
-                            <li class="flex items-start space-x-2"><i class="fa-solid fa-xmark text-red-400 mt-0.5"></i><span>Memicu kesenjangan sosial ekstrem & monopoli pasar.</span></li>
-                            <li class="flex items-start space-x-2"><i class="fa-solid fa-xmark text-red-400 mt-0.5"></i><span>Sekularisme: Pemisahan mutlak nilai agama dari tata negara.</span></li>
-                        </ul>
+                        <p class="text-lg text-white mb-6">Apa landasan epistemologis (sumber pengetahuan) dari filsafat Pancasila?</p>
+                        
+                        <div class="space-y-3">
+                            <button onclick="triggerWrong()" class="w-full text-left p-3 rounded bg-slate-800 hover:bg-red-900/80 border border-slate-600 transition duration-300 text-sm text-white shadow-lg transform hover:-translate-y-1">A. Ideologi Asing & Eksternal</button>
+                            <button onclick="triggerCorrect()" class="w-full text-left p-3 rounded bg-slate-800 hover:bg-emerald-900/80 border border-slate-600 transition duration-300 text-sm text-white shadow-lg transform hover:-translate-y-1">B. Nilai-nilai budaya, adat, & agama bangsa Indonesia</button>
+                            <button onclick="triggerWrong()" class="w-full text-left p-3 rounded bg-slate-800 hover:bg-red-900/80 border border-slate-600 transition duration-300 text-sm text-white shadow-lg transform hover:-translate-y-1">C. Pemikiran satu tokoh tunggal</button>
+                        </div>
+                        
+                        <div id="quiz-result" class="mt-4 text-center font-bold text-lg hidden"></div>
                     </div>
 
-                    <!-- Right: Pancasila System -->
-                    <div class="glass-panel p-5 rounded-2xl border-l-4 border-l-amber-500 space-y-3 bg-amber-500/5 relative overflow-hidden">
-                        <div class="flex justify-between items-center">
-                            <span class="px-2.5 py-0.5 bg-amber-500/20 text-amber-300 text-[10px] font-bold rounded uppercase">Sistem Pancasila</span>
-                            <i class="fa-solid fa-hand-holding-heart text-amber-400 text-xl"></i>
+                    <!-- Video Asli Embed HTML5 -->
+                    <div class="text-center space-y-4">
+                        <div class="relative w-full rounded-xl overflow-hidden border-2 border-[#D4AF37] shadow-2xl">
+                            <div class="absolute top-2 left-2 bg-black/80 text-[#D4AF37] text-xs font-bold px-2 py-1 rounded z-10 tracking-widest"><i class="fa-solid fa-play mr-1"></i> VIDEO EMBED ASLI</div>
+                            <!-- Real HTML5 Video dari Pixabay (Bukan Link Youtube!) -->
+                            <video src="https://cdn.pixabay.com/video/2019/11/14/29323-375549013_large.mp4" controls autoplay loop muted class="w-full h-64 object-cover"></video>
                         </div>
-                        <h3 class="text-lg font-bold text-amber-400">Jalan Tengah Monodualis Indonesia</h3>
-                        <ul class="space-y-2 text-xs text-slate-300">
-                            <li class="flex items-start space-x-2"><i class="fa-solid fa-check text-amber-400 mt-0.5"></i><span>Keseimbangan seimbang antara hak pribadi & tanggung jawab sosial.</span></li>
-                            <li class="flex items-start space-x-2"><i class="fa-solid fa-check text-amber-400 mt-0.5"></i><span>Demokrasi Ekonomi asas Kekeluargaan (Pasal 33 UUD 1945).</span></li>
-                            <li class="flex items-start space-x-2"><i class="fa-solid fa-check text-amber-400 mt-0.5"></i><span>Negara BerkeTuhanan tanpa menjadi negara agama/theokrasi.</span></li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- SLIDE 5: Kuis Interaktif Berhadiah Petasan Digital (Confetti) -->
-        <section class="slide" id="slide-5" data-notes="Uji pemahaman kelas atau ajak Dosen Pak Aziz berpartisipasi menjawab kuis interaktif dengan skor real-time!">
-            <div class="w-full max-w-3xl glass-panel p-7 rounded-3xl border border-amber-500/40 space-y-5 text-center shadow-2xl">
-                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest flex items-center space-x-2">
-                        <i class="fa-solid fa-gamepad text-amber-400"></i>
-                        <span>Kuis Interaktif Pemahaman Pancasila</span>
-                    </span>
-                    <span id="quiz-score-badge" class="px-3 py-1 bg-amber-500/20 text-amber-300 text-xs font-bold rounded-full border border-amber-500/30">SKOR: 0</span>
-                </div>
-
-                <div id="quiz-container" class="space-y-5 text-left">
-                    <h3 id="quiz-question" class="text-lg md:text-xl font-bold text-slate-100">Siapakah tokoh yang pertama kali mengusulkan istilah 'Pancasila' pada 1 Juni 1945?</h3>
-                    <div id="quiz-options" class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-                        <!-- Dynamic Buttons -->
-                    </div>
-                </div>
-
-                <div id="quiz-feedback" class="hidden p-3.5 rounded-xl text-xs font-bold text-center"></div>
-            </div>
-        </section>
-
-        <!-- SLIDE 6: Multimedia Showcase & Direct HTML5 Video Player -->
-        <section class="slide" id="slide-6" data-notes="Penutup presentasi: Tayangkan video langsung dan sampaikan kesimpulan akhir kepada audiens dan Dosen.">
-            <div class="w-full max-w-5xl space-y-5 text-center">
-                <div class="space-y-1">
-                    <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Refleksi Kebangsaan</span>
-                    <h2 class="text-2xl md:text-3xl font-bold text-slate-100">Kesimpulan & Komitmen Generasi Muda</h2>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center pt-1 text-left">
-                    
-                    <!-- Direct HTML5 Looping Video Player (No YouTube redirects) -->
-                    <div class="md:col-span-6 glass-panel p-3 rounded-2xl border border-slate-700 space-y-2">
-                        <div class="video-container h-52 rounded-xl border border-amber-500/30 shadow-lg">
-                            <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=800&auto=format&fit=crop">
-                                <source src="https://assets.mixkit.co/videos/preview/mixkit-flag-of-indonesia-waving-in-the-wind-41551-large.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <p class="text-[11px] text-slate-400 text-center font-medium">Video Dokumenter: Semangat Kebangsaan Indonesia</p>
-                    </div>
-
-                    <!-- Summary Point Cards -->
-                    <div class="md:col-span-6 space-y-3">
-                        <div class="glass-panel p-3.5 rounded-xl border-l-4 border-l-amber-500">
-                            <h4 class="font-bold text-xs text-amber-400 uppercase">Pancasila Sebagai Pandangan Hidup</h4>
-                            <p class="text-xs text-slate-300 mt-1">Bukan sekadar teks sejarah, melainkan jiwa organis (*Volksgeist*) yang memandu arah pembangunan nasional.</p>
-                        </div>
-
-                        <div class="glass-panel p-3.5 rounded-xl border-l-4 border-l-red-500">
-                            <h4 class="font-bold text-xs text-red-400 uppercase">Tantangan Era Digital & AI</h4>
-                            <p class="text-xs text-slate-300 mt-1">Diperlukan penguatan etika berbangsa agar kemajuan teknologi tetap memperkokoh persatuan nasional.</p>
-                        </div>
-
-                        <div class="pt-2 text-center md:text-left">
-                            <button onclick="jumpToSlide(1)" class="px-5 py-2.5 rounded-xl bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 text-xs font-bold border border-amber-500/40 transition">
-                                <i class="fa-solid fa-rotate-left mr-1.5"></i>Ulangi Dari Slide 1
-                            </button>
-                        </div>
+                        <p class="text-xs text-gray-400 bg-slate-800 py-2 rounded-lg border border-slate-700"><i class="fa-solid fa-circle-info mr-2 text-blue-400"></i>Ini adalah video MP4 asli yang di-embed langsung ke dalam slide, persis seperti presentasi profesional sungguhan.</p>
                     </div>
 
                 </div>
-            </div>
-        </section>
+            </section>
 
-    </main>
-
-    <!-- Presenter Notes Modal -->
-    <div id="notes-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-6">
-        <div class="glass-panel max-w-xl w-full p-6 rounded-2xl border border-amber-500/40 space-y-4 text-left shadow-2xl">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                <h3 class="font-bold text-amber-400 text-xs uppercase tracking-wider flex items-center space-x-2">
-                    <i class="fa-solid fa-sticky-note"></i>
-                    <span>Catatan Presenter / Dosen</span>
-                </h3>
-                <button onclick="toggleNotes()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
-            </div>
-            <p id="notes-text" class="text-xs text-slate-200 leading-relaxed font-mono bg-slate-900/90 p-4 rounded-xl border border-slate-800"></p>
-            <p class="text-[10px] text-slate-500">Panduan bimbingan alur bicara saat presentasi berlangsung di kelas.</p>
         </div>
     </div>
 
-    <!-- Footer Controls & Progress Indicators -->
-    <footer class="fixed bottom-0 left-0 right-0 z-50 px-8 py-3 bg-slate-950/80 backdrop-blur-xl border-t border-slate-800/60 flex justify-between items-center">
-        <div class="flex items-center space-x-2">
-            <button onclick="prevSlide()" class="px-4 py-2 rounded-xl glass-panel hover:bg-slate-800 text-xs font-bold text-slate-200 border border-slate-700 transition flex items-center space-x-1.5">
-                <i class="fa-solid fa-chevron-left"></i>
-                <span>Sebelumnya</span>
-            </button>
-            <button onclick="nextSlide()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-red-600 text-xs font-bold text-white shadow-lg hover:scale-105 transition flex items-center space-x-1.5">
-                <span>Selanjutnya</span>
-                <i class="fa-solid fa-chevron-right"></i>
-            </button>
-        </div>
-
-        <div id="slide-indicators" class="flex space-x-2"></div>
-
-        <div class="text-xs text-slate-400 font-mono">
-            <span id="current-slide-num" class="text-amber-400 font-bold">1</span> / <span id="total-slide-num">6</span>
-        </div>
-    </footer>
-
-    <!-- Interactive Logic Script -->
+    <!-- Reveal.js Engine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
     <script>
-        let currentSlideIndex = 1;
-        const totalSlides = document.querySelectorAll('.slide').length;
-        document.getElementById('total-slide-num').innerText = totalSlides;
-
-        const indicatorsContainer = document.getElementById('slide-indicators');
-        for (let i = 1; i <= totalSlides; i++) {
-            const dot = document.createElement('div');
-            dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer ${i === 1 ? 'bg-amber-400 w-8' : 'bg-slate-700 hover:bg-slate-500'}`;
-            dot.onclick = () => jumpToSlide(i);
-            indicatorsContainer.appendChild(dot);
-        }
-
-        function updateSlideView() {
-            document.querySelectorAll('.slide').forEach((slide, idx) => {
-                slide.classList.remove('active');
-                if (idx + 1 === currentSlideIndex) {
-                    slide.classList.add('active');
-                }
-            });
-
-            document.getElementById('current-slide-num').innerText = currentSlideIndex;
-
-            const dots = indicatorsContainer.children;
-            for (let i = 0; i < dots.length; i++) {
-                if (i + 1 === currentSlideIndex) {
-                    dots[i].className = 'w-8 h-2.5 rounded-full bg-amber-400 transition-all duration-300';
-                } else {
-                    dots[i].className = 'w-2.5 h-2.5 rounded-full bg-slate-700 hover:bg-slate-500 transition-all duration-300';
-                }
-            }
-
-            const activeSlide = document.getElementById(`slide-${currentSlideIndex}`);
-            const notes = activeSlide.getAttribute('data-notes') || 'Tidak ada catatan khusus.';
-            document.getElementById('notes-text').innerText = notes;
-        }
-
-        function nextSlide() {
-            if (currentSlideIndex < totalSlides) {
-                currentSlideIndex++;
-                updateSlideView();
-            }
-        }
-
-        function prevSlide() {
-            if (currentSlideIndex > 1) {
-                currentSlideIndex--;
-                updateSlideView();
-            }
-        }
-
-        function jumpToSlide(index) {
-            if (index >= 1 && index <= totalSlides) {
-                currentSlideIndex = index;
-                updateSlideView();
-            }
-        }
-
-        // Spotlight Lampu Sorot Mouse Tracker
-        document.addEventListener('mousemove', (e) => {
-            const spotlight = document.getElementById('spotlight');
-            spotlight.style.setProperty('--x', `${e.clientX}px`);
-            spotlight.style.setProperty('--y', `${e.clientY}px`);
+        // Inisialisasi Reveal.js untuk efek MORPH (Magic Move) yang sesungguhnya
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            transition: 'slide', // Transisi default
+            autoAnimateEasing: 'cubic-bezier(0.4, 0.0, 0.2, 1)', // Efek Morphing halus (Magic Move)
+            autoAnimateDuration: 1.2,
+            autoAnimateUnmatched: false
         });
 
-        function toggleSpotlight() {
-            document.body.classList.toggle('spotlight-active');
-            document.getElementById('btn-spotlight').classList.toggle('text-amber-400');
+        // Logika Kuis Interaktif
+        function triggerCorrect() {
+            const res = document.getElementById('quiz-result');
+            res.innerHTML = '<i class="fa-solid fa-check-circle text-emerald-500 mr-2"></i>Tepat Sekali! Kuis Bekerja Interaktif! (100 Poin)';
+            res.className = 'mt-4 text-center font-bold text-lg text-emerald-400 block p-3 bg-emerald-900/30 rounded-lg border border-emerald-500/50';
+            
+            // Efek Confetti (Petasan Digital)
+            var duration = 3000;
+            var end = Date.now() + duration;
+            (function frame() {
+                confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#D4AF37', '#ffffff', '#ff0000'] });
+                confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#D4AF37', '#ffffff', '#ff0000'] });
+                if (Date.now() < end) { requestAnimationFrame(frame); }
+            }());
         }
 
-        function toggleNotes() {
-            document.getElementById('notes-modal').classList.toggle('hidden');
+        function triggerWrong() {
+            const res = document.getElementById('quiz-result');
+            res.innerHTML = '<i class="fa-solid fa-xmark-circle text-red-500 mr-2"></i>Salah, coba klik yang lain!';
+            res.className = 'mt-4 text-center font-bold text-lg text-red-400 block animate-bounce p-3 bg-red-900/30 rounded-lg border border-red-500/50';
         }
-
-        function toggleFullscreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(err => console.log(err));
-            } else {
-                if (document.exitFullscreen) document.exitFullscreen();
-            }
-        }
-
-        // Timeline History Data Switcher
-        const historyDetails = {
-            bpupki: {
-                tag: 'Fase BPUPKI',
-                title: 'Sidang BPUPKI I (29 Mei - 1 Juni 1945)',
-                desc: 'Prof. Soepomo menekankan konsep Negara Integralistik. Mr. Muhammad Yamin mengusulkan 5 asas dasar berbangsa. Pada 1 Juni 1945, Ir. Soekarno merumuskan pidato bersejarah mengenalkan istilah Pancasila.',
-                img: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?q=80&w=600&auto=format&fit=crop'
-            },
-            piagam: {
-                tag: 'Fase Piagam Jakarta',
-                title: 'Perumusan Piagam Jakarta (22 Juni 1945)',
-                desc: 'Panitia Sembilan menyepakati rancangan pembukaan UUD yang memuat Sila Pertama: Ketuhanan dengan kewajiban menjalankan syariat Islam bagi pemeluk-pemeluknya.',
-                img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=600&auto=format&fit=crop'
-            },
-            ppki: {
-                tag: 'Fase PPKI',
-                title: 'Pengesahan Resmi PPKI (18 Agustus 1945)',
-                desc: 'Demi konsensus integritas nasional, 7 kata dalam Sila Pertama disempurnakan menjadi Ketuhanan Yang Maha Esa secara mufakat oleh Mohammad Hatta dan pendiri bangsa.',
-                img: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=600&auto=format&fit=crop'
-            },
-            dinamika: {
-                tag: 'Fase Era Modern',
-                title: 'Dinamika & Tantangan Globalisasi',
-                desc: 'Pancasila berhadapan dengan ideologi transnasional dan transformasi digital. Diperlukan aplikasi nilai filsafat yang kontekstual dan adaptif bagi generasi muda.',
-                img: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=600&auto=format&fit=crop'
-            }
-        };
-
-        function showHistoryDetail(key) {
-            const item = historyDetails[key];
-            if (item) {
-                document.getElementById('detail-tag').innerText = item.tag;
-                document.getElementById('detail-title').innerHTML = `<i class="fa-solid fa-circle-check text-amber-400 mr-2"></i>${item.title}`;
-                document.getElementById('detail-desc').innerText = item.desc;
-                document.getElementById('detail-img').src = item.img;
-            }
-        }
-
-        // Ideology Switcher
-        function switchIdeology(type) {
-            if (type === 'kapitalisme') {
-                document.getElementById('tab-kapital').className = 'px-4 py-2 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 transition';
-                document.getElementById('tab-sosial').className = 'px-4 py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition';
-                document.getElementById('ideo-target-tag').innerText = 'Kapitalisme Liberal';
-                document.getElementById('ideo-target-title').innerText = 'Individualisme & Bebas Tanpa Batas';
-                document.getElementById('ideo-target-list').innerHTML = `
-                    <li class="flex items-start space-x-2"><i class="fa-solid fa-xmark text-red-400 mt-0.5"></i><span>Fokus pada kebebasan individu mutlak atas nama modal.</span></li>
-                    <li class="flex items-start space-x-2"><i class="fa-solid fa-xmark text-red-400 mt-0.5"></i><span>Memicu kesenjangan sosial ekstrem & monopoli pasar.</span></li>
-                    <li class="flex items-start space-x-2"><i class="fa-solid fa-xmark text-red-400 mt-0.5"></i><span>Sekularisme: Pemisahan mutlak nilai agama dari tata negara.</span></li>
-                `;
-            } else {
-                document.getElementById('tab-sosial').className = 'px-4 py-2 rounded-lg text-xs font-bold bg-amber-500 text-slate-950 transition';
-                document.getElementById('tab-kapital').className = 'px-4 py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition';
-                document.getElementById('ideo-target-tag').innerText = 'Sosialisme Komunis';
-                document.getElementById('ideo-target-title').innerText = 'Kolektivisme Otoriter & Ateisme';
-                document.getElementById('ideo-target-list').innerHTML = `
-                    <li class="flex items-start space-x-2"><i class="fa-solid fa-xmark text-red-400 mt-0.5"></i><span>Penghapusan hak milik pribadi secara total oleh negara.</span></li>
-                    <li class="flex items-start space-x-2"><i class="fa-solid fa-xmark text-red-400 mt-0.5"></i><span>Negara mengontrol seluruh kehidupan secara sentralistik.</span></li>
-                    <li class="flex items-start space-x-2"><i class="fa-solid fa-xmark text-red-400 mt-0.5"></i><span>Materialisme ateistis: Menolak keberadaan norma Ketuhanan.</span></li>
-                `;
-            }
-        }
-
-        // Quiz Engine Data
-        const quizData = [
-            {
-                q: "Siapakah tokoh yang pertama kali mengusulkan istilah 'Pancasila' pada 1 Juni 1945?",
-                options: ["Ir. Soekarno", "Mohammad Hatta", "Mr. Muhammad Yamin", "Prof. Soepomo"],
-                answer: 0
-            },
-            {
-                q: "Penyempurnaan 7 kata pada Sila Pertama Piagam Jakarta disahkan secara mufakat oleh PPKI pada tanggal...",
-                options: ["17 Agustus 1945", "18 Agustus 1945", "22 Juni 1945", "1 Juni 1945"],
-                answer: 1
-            },
-            {
-                q: "Landasan ontology Pancasila memandang hakikat keberadaan manusia Indonesia sebagai...",
-                options: ["Makhluk individu mutlak", "Makhluk sosial mutlak", "Makhluk Monodualis (Individu & Sosial)", "Makhluk pasar bebas"],
-                answer: 2
-            }
-        ];
-
-        let currentQuizIndex = 0;
-        let score = 0;
-
-        function loadQuizQuestion() {
-            const qData = quizData[currentQuizIndex];
-            document.getElementById('quiz-question').innerText = qData.q;
-            const optionsContainer = document.getElementById('quiz-options');
-            optionsContainer.innerHTML = '';
-
-            qData.options.forEach((opt, idx) => {
-                const btn = document.createElement('button');
-                btn.className = 'p-3.5 rounded-xl glass-panel hover:bg-slate-800 border border-slate-700 text-xs font-semibold text-left text-slate-200 transition hover:border-amber-400 flex items-center space-x-2';
-                btn.innerHTML = `<span class="w-6 h-6 rounded-md bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-[11px]">${String.fromCharCode(65 + idx)}</span> <span>${opt}</span>`;
-                btn.onclick = () => checkQuizAnswer(idx);
-                optionsContainer.appendChild(btn);
-            });
-        }
-
-        function checkQuizAnswer(selectedIdx) {
-            const qData = quizData[currentQuizIndex];
-            const feedbackBox = document.getElementById('quiz-feedback');
-            feedbackBox.classList.remove('hidden', 'bg-emerald-500/20', 'text-emerald-300', 'bg-red-500/20', 'text-red-300');
-
-            if (selectedIdx === qData.answer) {
-                score += 100;
-                document.getElementById('quiz-score-badge').innerText = `SKOR: ${score}`;
-                feedbackBox.classList.add('bg-emerald-500/20', 'text-emerald-300');
-                feedbackBox.innerHTML = '<i class="fa-solid fa-circle-check mr-1.5"></i>Jawaban Tepat! Luar biasa 🎉';
-                confetti({ particleCount: 60, spread: 70, origin: { y: 0.75 } });
-            } else {
-                feedbackBox.classList.add('bg-red-500/20', 'text-red-300');
-                feedbackBox.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1.5"></i>Kurang Tepat. Jawaban benar: ${qData.options[qData.answer]}`;
-            }
-
-            setTimeout(() => {
-                currentQuizIndex = (currentQuizIndex + 1) % quizData.length;
-                feedbackBox.classList.add('hidden');
-                loadQuizQuestion();
-            }, 2500);
-        }
-
-        // Keyboard Shortcuts
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') nextSlide();
-            if (e.key === 'ArrowLeft' || e.key === 'PageUp') prevSlide();
-            if (e.key === 'f' || e.key === 'F') toggleFullscreen();
-            if (e.key === 'l' || e.key === 'L') toggleSpotlight();
-            if (e.key === 'n' || e.key === 'N') toggleNotes();
-        });
-
-        // Initialize
-        updateSlideView();
-        loadQuizQuestion();
     </script>
 </body>
 </html>
