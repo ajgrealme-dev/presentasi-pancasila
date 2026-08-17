@@ -3,565 +3,488 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analisis Pertumbuhan Finansial - UNPAM</title>
+    <title>Analisis Pertumbuhan Finansial - Template SupermanPPT Style</title>
     
     <!-- Reveal.js -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reset.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/night.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/white.min.css">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            --bg-dark-mahogany: #1C120C;
+            --bg-warm-brown: #2D1E15;
+            --accent-gold: #C59B27;
+            --accent-light-gold: #E5C365;
+            --card-cream: #FFFDF9;
+            --text-dark: #2B1B12;
+        }
+
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark-mahogany); }
         .reveal .slides { text-align: left; }
-        .reveal h1, .reveal h2, .reveal h3, .reveal h4 { text-transform: none; font-family: 'Playfair Display', serif; }
-        .reveal p, .reveal div, .reveal li, .reveal table { font-family: 'Plus Jakarta Sans', sans-serif; }
-        
-        .glass-card {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 { font-family: 'Playfair Display', serif; text-transform: uppercase; }
+
+        /* SupermanPPT Style Cards */
+        .superman-card {
+            background-color: var(--card-cream);
+            border: 2px solid #E8D9C5;
+            border-radius: 20px;
             padding: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: all 0.3s ease;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .glass-card:hover { transform: translateY(-5px); border-color: rgba(212, 175, 55, 0.5); }
+        .superman-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 45px rgba(197, 155, 39, 0.25);
+        }
 
-        .table-glass {
+        /* Numbered Badges SupermanPPT Style */
+        .number-badge {
+            background: linear-gradient(135deg, #C59B27 0%, #8A6812 100%);
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(197, 155, 39, 0.4);
+        }
+
+        /* Top Header Ribbon */
+        .header-ribbon {
+            background: linear-gradient(90deg, #2D1E15 0%, #442D1F 100%);
+            border-bottom: 3px solid var(--accent-gold);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Tables SupermanPPT Style */
+        .superman-table {
             width: 100%; border-collapse: separate; border-spacing: 0;
-            background: rgba(30, 41, 59, 0.6); border-radius: 12px; overflow: hidden;
-            font-size: 0.6em;
+            background: #FFFDF9; border-radius: 14px; overflow: hidden;
+            font-size: 0.62em; border: 1px solid #E8D9C5;
         }
-        .table-glass th { background: rgba(15, 23, 42, 0.9); padding: 12px; text-align: center; border-bottom: 1px solid #334155; color: #D4AF37; }
-        .table-glass td { padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); color: #e2e8f0; }
-        .table-glass tr:hover td { background: rgba(255, 255, 255, 0.05); }
-        .text-left-col { text-align: left !important; font-weight: bold; }
+        .superman-table th { background: #2D1E15; color: var(--accent-light-gold); padding: 10px; text-align: center; font-weight: 700; }
+        .superman-table td { padding: 8px 10px; text-align: center; border-bottom: 1px solid #F0E6D8; color: #2D1E15; }
+        .superman-table tr:nth-child(even) { background: #FBF7F0; }
+        .superman-table tr:hover td { background: #F5EAD6; }
 
-        .positive { color: #10b981; font-weight: bold; font-size: 0.85em; }
-        .negative { color: #ef4444; font-weight: bold; font-size: 0.85em; }
+        .up-badge { color: #15803d; font-weight: 800; font-size: 0.85em; }
+        .down-badge { color: #b91c1c; font-weight: 800; font-size: 0.85em; }
 
-        .flip-card { perspective: 1000px; height: 350px; width: 100%; }
-        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; cursor: pointer; }
-        .flip-card.flipped .flip-card-inner, .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 16px; padding: 30px; }
-        .flip-card-front { background: rgba(30, 41, 59, 0.9); border: 2px solid #3b82f6; }
-        .flip-card-back { background: #3b82f6; color: white; transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; }
-        
-        .icbp-front { border-color: #10b981; }
-        .icbp-back { background: #10b981; }
-
-        #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
+        /* Animation Keyframes */
+        @keyframes expandLogo {
+            0% { transform: scale(0.2) rotate(-180deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        .animate-logo { animation: expandLogo 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
     </style>
 </head>
 <body>
     <div class="reveal">
         <div class="slides">
             
-            <!-- SLIDE 1: HERO -->
-            <section data-auto-animate data-background-color="#0B0F17">
-                <div class="flex flex-col items-center justify-center text-center h-full pt-16 relative">
-                    <!-- Background Video Abstrak -->
-                    <video src="./assets/video.mp4" autoplay loop muted class="absolute inset-0 w-full h-full object-cover opacity-20 -z-10"></video>
+            <!-- SLIDE 1: HERO INTRO (SupermanPPT Exact Reproduction) -->
+            <section data-auto-animate data-background-color="#1C120C">
+                <div class="flex flex-col items-center justify-center text-center h-full pt-10 relative">
                     
-                    <img data-id="logo-unpam" src="./assets/unpam.png" class="w-32 h-32 mb-6 drop-shadow-2xl" alt="Logo UNPAM">
-                    
-                    <h1 data-id="title-main" class="text-5xl md:text-7xl font-bold text-white drop-shadow-lg mb-2">Analisis Pertumbuhan Finansial</h1>
-                    <h3 data-id="subtitle" class="text-xl md:text-2xl text-[#D4AF37] font-light tracking-wide bg-black/60 px-6 py-2 rounded-full mt-4">
-                        Tinjauan Kinerja Komparatif: PT Mayora Indah Tbk & PT Indofood CBP (2020 - 2025)
-                    </h3>
-                    
-                    <div data-id="metadata" class="mt-12 flex space-x-6 text-sm text-gray-300 bg-slate-900/80 px-8 py-3 rounded-full border border-gray-700 shadow-2xl">
-                        <span><i class="fa-solid fa-user-graduate mr-2 text-blue-400"></i>Aziz Maulana</span>
-                        <span><i class="fa-solid fa-layer-group mr-2 text-blue-400"></i>Tugas Manajemen</span>
-                        <span><i class="fa-solid fa-university mr-2 text-blue-400"></i>Semester 3 - UNPAM</span>
+                    <!-- Circular Expanding Logo Emblem -->
+                    <div data-id="logo-container" class="w-36 h-36 rounded-full bg-gradient-to-tr from-[#8A6812] via-[#C59B27] to-[#F3E5AB] p-1.5 shadow-[0_0_50px_rgba(197,155,39,0.5)] mb-6 animate-logo">
+                        <div class="w-full h-full bg-[#2D1E15] rounded-full flex items-center justify-center border-2 border-[#E5C365]">
+                            <img data-id="logo-unpam" src="./assets/unpam.png" class="w-24 h-24 object-contain drop-shadow-xl" alt="UNPAM Logo">
+                        </div>
+                    </div>
+
+                    <!-- Main Title -->
+                    <h1 data-id="title-main" class="text-4xl md:text-6xl font-extrabold text-[#E5C365] tracking-wider mb-2 drop-shadow-md">
+                        ANALISIS PERTUMBUHAN FINANSIAL
+                    </h1>
+
+                    <p data-id="subtitle" class="text-lg md:text-xl text-gray-300 font-medium max-w-3xl mb-8 bg-[#2D1E15]/80 px-6 py-2 rounded-full border border-[#C59B27]/40 shadow-inner">
+                        Tinjauan Kinerja Komparatif: PT Mayora Indah Tbk & PT Indofood CBP Sukses Makmur Tbk (2020 - 2025)
+                    </p>
+
+                    <!-- Presenter Metadata Footer (SupermanPPT Style) -->
+                    <div data-id="presenter-box" class="grid grid-cols-3 gap-6 w-full max-w-4xl mt-6 text-left">
+                        <div class="bg-[#2D1E15] p-4 rounded-xl border border-[#C59B27]/30">
+                            <p class="text-xs text-[#C59B27] font-bold uppercase tracking-wider mb-1"><i class="fa-solid fa-graduation-cap mr-1"></i> Program Studi</p>
+                            <p class="text-sm font-semibold text-white">Manajemen - Semester 3</p>
+                            <p class="text-xs text-gray-400">UNPAM Kampus Serang</p>
+                        </div>
+                        <div class="bg-[#2D1E15] p-4 rounded-xl border border-[#C59B27]/30 text-center">
+                            <p class="text-xs text-[#C59B27] font-bold uppercase tracking-wider mb-1"><i class="fa-solid fa-user mr-1"></i> Penyusun / NIM</p>
+                            <p class="text-base font-extrabold text-white">Aziz Maulana</p>
+                            <span class="bg-[#C59B27] text-black text-xs font-bold px-2 py-0.5 rounded">NIM: 221011400000</span>
+                        </div>
+                        <div class="bg-[#2D1E15] p-4 rounded-xl border border-[#C59B27]/30 text-right">
+                            <p class="text-xs text-[#C59B27] font-bold uppercase tracking-wider mb-1"><i class="fa-solid fa-book-bookmark mr-1"></i> Mata Kuliah</p>
+                            <p class="text-sm font-semibold text-white">Manajemen Keuangan</p>
+                            <p class="text-xs text-gray-400">Tugas Mandiri 1</p>
+                        </div>
+                    </div>
+
+                    <p class="mt-8 text-xs text-[#C59B27] animate-pulse"><i class="fa-solid fa-chevron-right mr-1"></i> Tekan Spasi / Panah Kanan Untuk Masuk Daftar Isi</p>
+                </div>
+            </section>
+
+            <!-- SLIDE 2: TABLE OF CONTENT (SupermanPPT Grid Morphing) -->
+            <section data-auto-animate data-background-color="#1C120C">
+                <div class="header-ribbon mb-8">
+                    <div class="flex items-center space-x-3">
+                        <img data-id="logo-unpam" src="./assets/unpam.png" class="w-8 h-8" alt="UNPAM">
+                        <h2 data-id="title-main" class="text-xl font-bold text-[#E5C365] m-0">TABLE OF CONTENT</h2>
+                    </div>
+                    <span class="text-xs text-gray-400">◆ AGENDA PRESENTASI ◆</span>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6 mt-6">
+                    <div class="superman-card cursor-pointer group" data-id="card-bab1">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="number-badge">I</span>
+                            <i class="fa-solid fa-building text-2xl text-[#C59B27]"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-[#2D1E15]">BAB I</h3>
+                        <p class="text-xs text-gray-600 font-semibold mt-1">Profil Perusahaan Dianalisis (MYOR vs ICBP)</p>
+                    </div>
+
+                    <div class="superman-card cursor-pointer group" data-id="card-bab2">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="number-badge">II</span>
+                            <i class="fa-solid fa-scale-balanced text-2xl text-[#C59B27]"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-[#2D1E15]">BAB II</h3>
+                        <p class="text-xs text-gray-600 font-semibold mt-1">Posisi Keuangan (Neraca 2020 - 2025)</p>
+                    </div>
+
+                    <div class="superman-card cursor-pointer group" data-id="card-bab3">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="number-badge">III</span>
+                            <i class="fa-solid fa-chart-line text-2xl text-[#C59B27]"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-[#2D1E15]">BAB III</h3>
+                        <p class="text-xs text-gray-600 font-semibold mt-1">Kinerja Laba Rugi (EBIT & EAT)</p>
+                    </div>
+
+                    <div class="superman-card cursor-pointer group" data-id="card-bab4">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="number-badge">IV</span>
+                            <i class="fa-solid fa-chart-pie text-2xl text-[#C59B27]"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-[#2D1E15]">BAB IV</h3>
+                        <p class="text-xs text-gray-600 font-semibold mt-1">Analisis Grafis & Tren Penjualan</p>
+                    </div>
+
+                    <div class="superman-card cursor-pointer group col-span-2" data-id="card-bab5">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="number-badge">V</span>
+                            <i class="fa-solid fa-award text-2xl text-[#C59B27]"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-[#2D1E15]">BAB V</h3>
+                        <p class="text-xs text-gray-600 font-semibold mt-1">Kesimpulan Pola Pertumbuhan & Rekomendasi</p>
                     </div>
                 </div>
             </section>
 
-            <!-- SLIDE 2: PROFIL PERUSAHAAN (Morphing) -->
-            <section data-auto-animate data-background-color="#0B0F17">
-                <div class="flex items-center space-x-4 mb-8 border-b border-gray-800 pb-4">
-                    <img data-id="logo-unpam" src="./assets/unpam.png" class="w-12 h-12" alt="Logo UNPAM">
+            <!-- SLIDE 3: BAB I - PROFIL PERUSAHAAN -->
+            <section data-auto-animate data-background-color="#1C120C">
+                <div class="header-ribbon mb-6">
+                    <div class="flex items-center space-x-3">
+                        <span class="number-badge text-sm w-7 h-7">I</span>
+                        <h2 data-id="title-main" class="text-lg font-bold text-[#E5C365] m-0">BAB I: PROFIL PERUSAHAAN</h2>
+                    </div>
+                    <img data-id="logo-unpam" src="./assets/unpam.png" class="w-7 h-7" alt="UNPAM">
+                </div>
+
+                <div class="grid grid-cols-2 gap-8">
+                    <!-- MYOR Card -->
+                    <div class="superman-card border-l-8 border-l-blue-600" data-id="card-bab1">
+                        <div class="flex items-center justify-between mb-4 pb-2 border-b border-gray-200">
+                            <div>
+                                <h3 class="text-2xl font-extrabold text-[#2D1E15]">PT Mayora Indah Tbk</h3>
+                                <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-0.5 rounded">Ticker: MYOR</span>
+                            </div>
+                            <i class="fa-solid fa-cookie-bite text-4xl text-blue-600"></i>
+                        </div>
+                        <p class="text-xs leading-relaxed text-gray-700 font-medium mb-4">
+                            Salah satu kelompok bisnis produk konsumen terkemuka di Indonesia. Bergerak di bidang pengolahan makanan dan minuman dengan produk ikonik yang mendominasi pangsa pasar seperti <strong>Biskuit Roma, Kopiko, Torabika, dan Energen</strong>.
+                        </p>
+                        <div class="bg-blue-50 p-3 rounded-xl border border-blue-200 text-xs text-blue-900 font-semibold">
+                            <i class="fa-solid fa-bullseye text-blue-600 mr-1"></i> Fokus Utama: Ekspansi pasar ekspor secara masif dan inovasi produk FMCG cepat saji.
+                        </div>
+                    </div>
+
+                    <!-- ICBP Card -->
+                    <div class="superman-card border-l-8 border-l-emerald-600">
+                        <div class="flex items-center justify-between mb-4 pb-2 border-b border-gray-200">
+                            <div>
+                                <h3 class="text-2xl font-extrabold text-[#2D1E15]">PT Indofood CBP Tbk</h3>
+                                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded">Ticker: ICBP</span>
+                            </div>
+                            <i class="fa-solid fa-bowl-food text-4xl text-emerald-600"></i>
+                        </div>
+                        <p class="text-xs leading-relaxed text-gray-700 font-medium mb-4">
+                            Pemain dominan dalam industri produk konsumen bermerek di Indonesia. Portofolio bisnisnya mencakup <strong>mi instan (Indomie), produk susu, makanan ringan, penyedap makanan, serta biskuit</strong>.
+                        </p>
+                        <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200 text-xs text-emerald-900 font-semibold">
+                            <i class="fa-solid fa-shield-halved text-emerald-600 mr-1"></i> Keunggulan: Anak perusahaan Indofood yang menyumbang pendapatan sangat stabil berkapitalisasi besar.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 4: BAB II - POSISI KEUANGAN (NERACA) -->
+            <section data-auto-animate data-background-color="#1C120C">
+                <div class="header-ribbon mb-4">
+                    <div class="flex items-center space-x-3">
+                        <span class="number-badge text-sm w-7 h-7">II</span>
+                        <h2 data-id="title-main" class="text-lg font-bold text-[#E5C365] m-0">BAB II: POSISI KEUANGAN (NERACA 2020 - 2025)</h2>
+                    </div>
+                    <span class="text-xs text-gray-400">Dalam Miliar Rupiah</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Tabel MYOR -->
                     <div>
-                        <h1 data-id="title-main" class="text-2xl font-bold text-white m-0">Profil Perusahaan yang Dianalisis</h1>
-                        <h3 data-id="subtitle" class="text-sm text-[#D4AF37] m-0">Tinjauan Kinerja Komparatif: MYOR vs ICBP</h3>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-8 mt-10">
-                    <!-- Kartu MYOR -->
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front flex flex-col items-center justify-center">
-                                <div class="w-24 h-24 bg-blue-900 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(59,130,246,0.5)]">
-                                    <i class="fa-solid fa-cookie-bite text-5xl text-blue-400"></i>
-                                </div>
-                                <h3 class="text-3xl font-bold text-blue-400">PT Mayora Indah Tbk</h3>
-                                <span class="bg-blue-600/30 text-blue-300 px-3 py-1 rounded-full text-sm mt-2 font-bold">(MYOR)</span>
-                            </div>
-                            <div class="flip-card-back text-left">
-                                <h4 class="text-2xl font-bold mb-4 border-b border-white/30 pb-2"><i class="fa-solid fa-industry mr-2"></i>FMCG Unggulan</h4>
-                                <p class="text-sm leading-relaxed text-white/90">
-                                    Kelompok bisnis produk konsumen terkemuka di Indonesia. Bergerak di bidang pengolahan makanan dan minuman dengan produk ikonik (Biskuit Roma, Kopiko, Torabika, Energen).
-                                </p>
-                                <div class="mt-4 flex space-x-2">
-                                    <span class="bg-black/20 px-2 py-1 rounded text-xs"><i class="fa-solid fa-earth-asia mr-1"></i>Ekspor</span>
-                                    <span class="bg-black/20 px-2 py-1 rounded text-xs"><i class="fa-solid fa-lightbulb mr-1"></i>Inovasi</span>
-                                </div>
-                            </div>
+                        <div class="bg-[#2D1E15] text-[#E5C365] text-xs font-bold px-3 py-1.5 rounded-t-lg flex justify-between items-center">
+                            <span><i class="fa-solid fa-cookie-bite mr-1"></i> NERACA PT MAYORA INDAH (MYOR)</span>
+                            <span class="text-white text-[10px]">2020-2025</span>
                         </div>
+                        <table class="superman-table">
+                            <thead>
+                                <tr><th>Indikator</th><th>'20</th><th>'21</th><th>'22</th><th>'23</th><th>'24</th><th>'25</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="font-bold text-left">Aset Lancar</td><td>12.8k</td><td>12.6k <span class="down-badge">↓</span></td><td>14.7k <span class="up-badge">↑</span></td><td>16.0k <span class="up-badge">↑</span></td><td>17.5k <span class="up-badge">↑</span></td><td>19.5k <span class="up-badge">↑</span></td></tr>
+                                <tr><td class="font-bold text-left">Aset Tetap</td><td>6.9k</td><td>7.2k <span class="up-badge">↑</span></td><td>7.5k <span class="up-badge">↑</span></td><td>7.8k <span class="up-badge">↑</span></td><td>8.3k <span class="up-badge">↑</span></td><td>8.6k <span class="up-badge">↑</span></td></tr>
+                                <tr><td class="font-bold text-left">Utang Lancar</td><td>3.5k</td><td>4.4k <span class="up-badge">↑</span></td><td>5.2k <span class="up-badge">↑</span></td><td>4.4k <span class="down-badge">↓</span></td><td>4.8k <span class="up-badge">↑</span></td><td>5.0k <span class="up-badge">↑</span></td></tr>
+                                <tr><td class="font-bold text-left">Utang Jjang Panjang</td><td>5.0k</td><td>4.1k <span class="down-badge">↓</span></td><td>4.2k <span class="up-badge">↑</span></td><td>4.1k <span class="down-badge">↓</span></td><td>4.1k <span class="up-badge">↑</span></td><td>4.1k =</td></tr>
+                                <tr class="bg-amber-100 font-bold"><td class="text-left text-amber-900">Modal (Ekuitas)</td><td>11.2k</td><td>11.3k</td><td>12.8k</td><td>15.2k</td><td>16.8k</td><td>18.9k</td></tr>
+                            </tbody>
+                        </table>
                     </div>
 
-                    <!-- Kartu ICBP -->
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front icbp-front flex flex-col items-center justify-center">
-                                <div class="w-24 h-24 bg-emerald-900 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(16,185,129,0.5)]">
-                                    <i class="fa-solid fa-bowl-food text-5xl text-emerald-400"></i>
-                                </div>
-                                <h3 class="text-3xl font-bold text-emerald-400">PT Indofood CBP</h3>
-                                <span class="bg-emerald-600/30 text-emerald-300 px-3 py-1 rounded-full text-sm mt-2 font-bold">(ICBP)</span>
-                            </div>
-                            <div class="flip-card-back icbp-back text-left">
-                                <h4 class="text-2xl font-bold mb-4 border-b border-white/30 pb-2"><i class="fa-solid fa-crown mr-2"></i>Pemain Dominan</h4>
-                                <p class="text-sm leading-relaxed text-white/90">
-                                    Pemain dominan dalam industri produk konsumen bermerek di Indonesia. Portofolio mencakup mi instan (Indomie), produk susu, makanan ringan, dan penyedap makanan.
-                                </p>
-                                <div class="mt-4 flex space-x-2">
-                                    <span class="bg-black/20 px-2 py-1 rounded text-xs"><i class="fa-solid fa-chart-line mr-1"></i>Pendapatan Stabil</span>
-                                    <span class="bg-black/20 px-2 py-1 rounded text-xs"><i class="fa-solid fa-building mr-1"></i>Skala Masif</span>
-                                </div>
-                            </div>
+                    <!-- Tabel ICBP -->
+                    <div>
+                        <div class="bg-[#2D1E15] text-[#E5C365] text-xs font-bold px-3 py-1.5 rounded-t-lg flex justify-between items-center">
+                            <span><i class="fa-solid fa-bowl-food mr-1"></i> NERACA PT INDOFOOD CBP (ICBP)</span>
+                            <span class="text-white text-[10px]">2020-2025</span>
                         </div>
+                        <table class="superman-table">
+                            <thead>
+                                <tr><th>Indikator</th><th>'20</th><th>'21</th><th>'22</th><th>'23</th><th>'24</th><th>'25</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="font-bold text-left">Aset Lancar</td><td>20.7k</td><td>28.3k <span class="up-badge">↑</span></td><td>25.1k <span class="down-badge">↓</span></td><td>29.1k <span class="up-badge">↑</span></td><td>33.0k <span class="up-badge">↑</span></td><td>38.0k <span class="up-badge">↑</span></td></tr>
+                                <tr><td class="font-bold text-left">Aset Tetap</td><td>82.8k</td><td>89.7k <span class="up-badge">↑</span></td><td>90.2k <span class="up-badge">↑</span></td><td>90.1k <span class="down-badge">↓</span></td><td>92.0k <span class="up-badge">↑</span></td><td>94.0k <span class="up-badge">↑</span></td></tr>
+                                <tr><td class="font-bold text-left">Utang Lancar</td><td>9.5k</td><td>14.1k <span class="up-badge">↑</span></td><td>12.3k <span class="down-badge">↓</span></td><td>13.5k <span class="up-badge">↑</span></td><td>14.5k <span class="up-badge">↑</span></td><td>16.0k <span class="up-badge">↑</span></td></tr>
+                                <tr><td class="font-bold text-left">Utang Jjang Panjang</td><td>43.7k</td><td>49.2k <span class="up-badge">↑</span></td><td>45.1k <span class="down-badge">↓</span></td><td>43.2k <span class="down-badge">↓</span></td><td>42.5k <span class="down-badge">↓</span></td><td>42.0k <span class="down-badge">↓</span></td></tr>
+                                <tr class="bg-emerald-100 font-bold"><td class="text-left text-emerald-900">Modal (Ekuitas)</td><td>50.3k</td><td>54.7k</td><td>57.8k</td><td>62.4k</td><td>68.0k</td><td>74.0k</td></tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+
+                <div class="mt-4 superman-card py-2 px-4 text-xs font-semibold text-gray-700 bg-amber-50 flex items-center justify-between">
+                    <span><i class="fa-solid fa-circle-check text-green-600 mr-2"></i> <strong>Temuan Utama:</strong> Neraca kedua perusahaan menunjukkan kenaikan Modal secara konsisten tiap tahun.</span>
+                    <span class="bg-[#2D1E15] text-[#E5C365] px-3 py-1 rounded-full text-[10px]">ICBP Berhasil Menekan Utang JP Sejak 2022</span>
+                </div>
             </section>
 
-            <!-- SLIDE 3: NERACA MAYORA -->
-            <section data-auto-animate data-background-color="#0B0F17">
-                <div class="flex items-center space-x-3 mb-6">
-                    <img data-id="logo-unpam" src="./assets/unpam.png" class="w-8 h-8" alt="Logo UNPAM">
-                    <h1 data-id="title-main" class="text-xl font-bold text-white m-0">Posisi Keuangan (Neraca)</h1>
-                    <span class="text-gray-500">|</span>
-                    <h2 class="text-lg font-light text-blue-400 m-0"><i class="fa-solid fa-cookie-bite mr-2"></i>PT Mayora Indah Tbk</h2>
-                </div>
-
-                <div class="glass-card p-4">
-                    <table class="table-glass">
-                        <thead>
-                            <tr>
-                                <th class="text-left-col">Indikator</th>
-                                <th>2020</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-left-col"><i class="fa-solid fa-wallet mr-2 text-gray-400"></i>Aset Lancar</td>
-                                <td>12.838</td>
-                                <td>12.647 <br><span class="negative">(-1.5%)</span></td>
-                                <td>14.752 <br><span class="positive">(+16.6%)</span></td>
-                                <td>16.035 <br><span class="positive">(+8.7%)</span></td>
-                                <td>17.500 <br><span class="positive">(+9.1%)</span></td>
-                                <td>19.500 <br><span class="positive">(+11.4%)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left-col"><i class="fa-solid fa-building mr-2 text-gray-400"></i>Aset Tetap</td>
-                                <td>6.939</td>
-                                <td>7.270 <span class="positive">(+4.8%)</span></td>
-                                <td>7.524 <span class="positive">(+3.5%)</span></td>
-                                <td>7.835 <span class="positive">(+4.1%)</span></td>
-                                <td>8.300 <span class="positive">(+5.9%)</span></td>
-                                <td>8.600 <span class="positive">(+3.6%)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left-col"><i class="fa-solid fa-file-invoice-dollar mr-2 text-gray-400"></i>Utang Lancar</td>
-                                <td>3.505</td>
-                                <td>4.401 <br><span class="positive">(+25.6%)</span></td>
-                                <td>5.234 <br><span class="positive">(+18.9%)</span></td>
-                                <td>4.470 <br><span class="negative">(-14.6%)</span></td>
-                                <td>4.800 <span class="positive">(+7.4%)</span></td>
-                                <td>5.000 <span class="positive">(+4.2%)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left-col"><i class="fa-solid fa-hand-holding-dollar mr-2 text-gray-400"></i>Utang Jangka Panjang</td>
-                                <td>5.001</td>
-                                <td>4.156 <br><span class="negative">(-16.9%)</span></td>
-                                <td>4.208 <span class="positive">(+1.3%)</span></td>
-                                <td>4.118 <span class="negative">(-2.1%)</span></td>
-                                <td>4.150 <span class="positive">(+0.8%)</span></td>
-                                <td>4.150 <span class="positive">(0.0%)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left-col text-[#D4AF37]"><i class="fa-solid fa-vault mr-2"></i>Modal (Ekuitas)</td>
-                                <td class="text-[#D4AF37]">11.271</td>
-                                <td class="text-[#D4AF37]">11.360 <br><span class="positive">(+0.8%)</span></td>
-                                <td class="text-[#D4AF37]">12.834 <br><span class="positive">(+13.0%)</span></td>
-                                <td class="text-[#D4AF37]">15.282 <br><span class="positive">(+19.1%)</span></td>
-                                <td class="text-[#D4AF37]">16.850 <br><span class="positive">(+10.3%)</span></td>
-                                <td class="text-[#D4AF37]">18.950 <br><span class="positive">(+12.5%)</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="mt-4 text-xs text-center text-gray-300 bg-slate-800 p-2 rounded-lg border border-slate-600">
-                        <i class="fa-solid fa-lightbulb text-yellow-400 mr-2 animate-pulse"></i> Neraca MYOR menunjukkan peningkatan Aset dan Modal secara konsisten setiap tahunnya, sementara Utang Jangka Panjang berhasil ditekan.
+            <!-- SLIDE 5: BAB III - KINERJA LABA RUGI (SupermanPPT 4 Highlight Cards) -->
+            <section data-auto-animate data-background-color="#1C120C">
+                <div class="header-ribbon mb-6">
+                    <div class="flex items-center space-x-3">
+                        <span class="number-badge text-sm w-7 h-7">III</span>
+                        <h2 data-id="title-main" class="text-lg font-bold text-[#E5C365] m-0">BAB III: KINERJA LABA RUGI (EBIT & EAT)</h2>
                     </div>
                 </div>
-            </section>
 
-            <!-- SLIDE 4: LABA RUGI MAYORA -->
-            <section data-auto-animate data-background-color="#0B0F17">
-                <div class="flex items-center space-x-3 mb-6">
-                    <img data-id="logo-unpam" src="./assets/unpam.png" class="w-8 h-8" alt="Logo UNPAM">
-                    <h1 data-id="title-main" class="text-xl font-bold text-white m-0">Kinerja Laba Rugi</h1>
-                    <span class="text-gray-500">|</span>
-                    <h2 class="text-lg font-light text-blue-400 m-0"><i class="fa-solid fa-cookie-bite mr-2"></i>PT Mayora Indah Tbk</h2>
-                </div>
-
-                <div class="glass-card p-4">
-                    <table class="table-glass">
-                        <thead>
-                            <tr>
-                                <th class="text-left-col">Indikator</th>
-                                <th>2020</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-left-col"><i class="fa-solid fa-cart-shopping mr-2 text-gray-400"></i>Penjualan</td>
-                                <td>24.476</td>
-                                <td>27.904 <br><span class="positive">(+14.0%)</span></td>
-                                <td>30.669 <br><span class="positive">(+9.9%)</span></td>
-                                <td>31.485 <br><span class="positive">(+2.7%)</span></td>
-                                <td>36.073 <br><span class="positive">(+14.6%)</span></td>
-                                <td>40.503 <br><span class="positive">(+12.3%)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left-col"><i class="fa-solid fa-money-bill-wave mr-2 text-gray-400"></i>Laba Kotor</td>
-                                <td>7.299</td>
-                                <td>6.922 <span class="negative">(-5.2%)</span></td>
-                                <td>6.839 <br><span class="negative">(-1.2%)</span></td>
-                                <td>8.407 <br><span class="positive">(+22.9%)</span></td>
-                                <td>8.302 <span class="negative">(-1.3%)</span></td>
-                                <td>9.474 <br><span class="positive">(+14.1%)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left-col"><i class="fa-solid fa-gears mr-2 text-gray-400"></i>Laba Operasi (EBIT)</td>
-                                <td>2.901</td>
-                                <td>2.382 <br><span class="negative">(-17.9%)</span></td>
-                                <td>2.794 <br><span class="positive">(+17.3%)</span></td>
-                                <td>4.142 <br><span class="positive">(+48.3%)</span></td>
-                                <td>3.802 <span class="negative">(-8.2%)</span></td>
-                                <td>4.274 <br><span class="positive">(+12.4%)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left-col text-emerald-400 font-bold"><i class="fa-solid fa-sack-dollar mr-2"></i>Laba Bersih (EAT)</td>
-                                <td class="text-emerald-400 font-bold">2.098</td>
-                                <td class="text-emerald-400 font-bold">1.211 <br><span class="negative">(-42.3%)</span></td>
-                                <td class="text-emerald-400 font-bold">1.970 <br><span class="positive">(+62.7%)</span></td>
-                                <td class="text-emerald-400 font-bold">3.194 <br><span class="positive">(+62.1%)</span></td>
-                                <td class="text-emerald-400 font-bold">3.000 <span class="negative">(-6.1%)</span></td>
-                                <td class="text-emerald-400 font-bold">3.334 <br><span class="positive">(+11.1%)</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="mt-4 text-xs text-center text-gray-300 bg-slate-800 p-2 rounded-lg border border-slate-600">
-                        <i class="fa-solid fa-chart-line text-blue-400 mr-2"></i> Pertumbuhan Penjualan MYOR sangat solid, namun profitabilitas (EAT) mengalami fluktuasi tajam di tahun 2021 dan 2024 akibat beban operasional.
-                    </div>
-                </div>
-            </section>
-
-            <!-- SLIDE 5: NERACA INDOFOOD -->
-            <section data-auto-animate data-background-color="#0B0F17">
-                <div class="flex items-center space-x-3 mb-6">
-                    <img data-id="logo-unpam" src="./assets/unpam.png" class="w-8 h-8" alt="Logo UNPAM">
-                    <h1 data-id="title-main" class="text-xl font-bold text-white m-0">Posisi Keuangan (Neraca)</h1>
-                    <span class="text-gray-500">|</span>
-                    <h2 class="text-lg font-light text-emerald-400 m-0"><i class="fa-solid fa-bowl-food mr-2"></i>PT Indofood CBP</h2>
-                </div>
-
-                <div class="glass-card p-4">
-                    <table class="table-glass">
-                        <thead>
-                            <tr>
-                                <th class="text-left-col">Indikator</th>
-                                <th>2020</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-left-col"><i class="fa-solid fa-wallet mr-2 text-gray-400"></i>Aset Lancar</td>
-                                <td>20.716</td>
-                                <td>28.341 <br><span class="positive">(+36.8%)</span></td>
-                                <td>25.105 <br><span class="negative">(-11.4%)</span></td>
-                                <td>29.155 <br><span class="positive">(+16.1%)</span></td>
-                                <td>33.000 <br><span class="positive">(+13.2%)</span></td>
-                                <td>38.000 <br><span class="positive">(+15.2%)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left-col"><i class="fa-solid fa-building mr-2 text-gray-400"></i>Aset Tetap</td>
-                                <td>82.872</td>
-                                <td>89.725 <br><span class="positive">(+8.3%)</span></td>
-                                <td>90.200 <br><span class="positive">(+0.5%)</span></td>
-                                <td>90.111 <br><span class="negative">(-0.1%)</span></td>
-                                <td>92.000 <br><span class="positive">(+2.1%)</span></td>
-                                <td>94.000 <br><span class="positive">(+2.2%)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left-col"><i class="fa-solid fa-file-invoice-dollar mr-2 text-gray-400"></i>Utang Lancar</td>
-                                <td>9.530</td>
-                                <td>14.135 <br><span class="positive">(+48.3%)</span></td>
-                                <td>12.301 <br><span class="negative">(-13.0%)</span></td>
-                                <td>13.559 <br><span class="positive">(+10.2%)</span></td>
-                                <td>14.500 <br><span class="positive">(+6.9%)</span></td>
-                                <td>16.000 <br><span class="positive">(+10.3%)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left-col"><i class="fa-solid fa-hand-holding-dollar mr-2 text-gray-400"></i>Utang Jangka Panjang</td>
-                                <td>43.740</td>
-                                <td>49.209 <br><span class="positive">(+12.5%)</span></td>
-                                <td>45.150 <br><span class="negative">(-8.3%)</span></td>
-                                <td>43.250 <br><span class="negative">(-4.2%)</span></td>
-                                <td>42.500 <br><span class="negative">(-1.7%)</span></td>
-                                <td>42.000 <br><span class="negative">(-1.2%)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left-col text-[#D4AF37]"><i class="fa-solid fa-vault mr-2"></i>Modal (Ekuitas)</td>
-                                <td class="text-[#D4AF37]">50.318</td>
-                                <td class="text-[#D4AF37]">54.722 <br><span class="positive">(+8.8%)</span></td>
-                                <td class="text-[#D4AF37]">57.854 <br><span class="positive">(+5.7%)</span></td>
-                                <td class="text-[#D4AF37]">62.457 <br><span class="positive">(+8.0%)</span></td>
-                                <td class="text-[#D4AF37]">68.000 <br><span class="positive">(+8.9%)</span></td>
-                                <td class="text-[#D4AF37]">74.000 <br><span class="positive">(+8.8%)</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="mt-4 text-xs text-center text-gray-300 bg-slate-800 p-2 rounded-lg border border-slate-600">
-                        <i class="fa-solid fa-lightbulb text-yellow-400 mr-2 animate-pulse"></i> ICBP memiliki basis aset yang jauh lebih besar (skala masif). Mereka berhasil menurunkan Utang Jangka Panjang berturut-turut sejak 2022.
-                    </div>
-                </div>
-            </section>
-
-            <!-- SLIDE 6: LABA RUGI INDOFOOD -->
-            <section data-auto-animate data-background-color="#0B0F17">
-                <div class="flex items-center space-x-3 mb-6">
-                    <img data-id="logo-unpam" src="./assets/unpam.png" class="w-8 h-8" alt="Logo UNPAM">
-                    <h1 data-id="title-main" class="text-xl font-bold text-white m-0">Kinerja Laba Rugi</h1>
-                    <span class="text-gray-500">|</span>
-                    <h2 class="text-lg font-light text-emerald-400 m-0"><i class="fa-solid fa-bowl-food mr-2"></i>PT Indofood CBP</h2>
-                </div>
-
-                <div class="glass-card p-4">
-                    <table class="table-glass">
-                        <thead>
-                            <tr>
-                                <th class="text-left-col">Indikator</th>
-                                <th>2020</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-left-col"><i class="fa-solid fa-cart-shopping mr-2 text-gray-400"></i>Penjualan</td>
-                                <td>46.641</td>
-                                <td>56.803 <br><span class="positive">(+21.8%)</span></td>
-                                <td>64.793 <br><span class="positive">(+14.1%)</span></td>
-                                <td>67.909 <br><span class="positive">(+4.8%)</span></td>
-                                <td>72.500 <br><span class="positive">(+6.8%)</span></td>
-                                <td>78.000 <br><span class="positive">(+7.6%)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left-col"><i class="fa-solid fa-money-bill-wave mr-2 text-gray-400"></i>Laba Kotor</td>
-                                <td>17.065</td>
-                                <td>20.806 <br><span class="positive">(+21.9%)</span></td>
-                                <td>21.365 <br><span class="positive">(+2.7%)</span></td>
-                                <td>24.629 <br><span class="positive">(+15.3%)</span></td>
-                                <td>26.800 <br><span class="positive">(+8.8%)</span></td>
-                                <td>28.500 <br><span class="positive">(+6.3%)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left-col"><i class="fa-solid fa-gears mr-2 text-gray-400"></i>Laba Operasi (EBIT)</td>
-                                <td>9.265</td>
-                                <td>11.606 <br><span class="positive">(+25.3%)</span></td>
-                                <td>11.865 <br><span class="positive">(+2.2%)</span></td>
-                                <td>14.529 <br><span class="positive">(+22.5%)</span></td>
-                                <td>15.800 <br><span class="positive">(+8.8%)</span></td>
-                                <td>17.000 <br><span class="positive">(+7.6%)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left-col text-emerald-400 font-bold"><i class="fa-solid fa-sack-dollar mr-2"></i>Laba Bersih (EAT)</td>
-                                <td class="text-emerald-400 font-bold">6.586</td>
-                                <td class="text-emerald-400 font-bold">6.388 <br><span class="negative">(-3.0%)</span></td>
-                                <td class="text-emerald-400 font-bold">4.587 <br><span class="negative">(-28.2%)</span></td>
-                                <td class="text-emerald-400 font-bold">6.992 <br><span class="positive">(+52.4%)</span></td>
-                                <td class="text-emerald-400 font-bold">7.500 <br><span class="positive">(+7.3%)</span></td>
-                                <td class="text-emerald-400 font-bold">8.200 <br><span class="positive">(+9.3%)</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="mt-4 text-xs text-center text-gray-300 bg-slate-800 p-2 rounded-lg border border-slate-600">
-                        <i class="fa-solid fa-chart-line text-emerald-400 mr-2"></i> Meskipun volume penjualan dan EBIT tumbuh konsisten, Laba Bersih (EAT) sempat tertekan tajam di tahun 2022 sebelum pulih kuat.
-                    </div>
-                </div>
-            </section>
-
-            <!-- SLIDE 7: INTERACTIVE CHART (Penjualan) -->
-            <section data-auto-animate data-background-color="#0B0F17">
-                <div class="flex items-center space-x-3 mb-6">
-                    <img data-id="logo-unpam" src="./assets/unpam.png" class="w-8 h-8" alt="Logo UNPAM">
-                    <h1 data-id="title-main" class="text-xl font-bold text-white m-0">Tren Penjualan (2020-2025)</h1>
-                </div>
-
-                <div class="glass-card" style="height: 400px; position: relative;">
-                    <canvas id="salesChart"></canvas>
-                </div>
-                <div class="mt-4 text-xs text-center text-gray-300 bg-slate-800 p-3 rounded-lg border border-slate-600">
-                    <i class="fa-solid fa-info-circle text-blue-400 mr-2"></i> Kedua perusahaan menunjukkan tren penjualan "Upward" yang sangat konsisten tanpa ada tahun yang menurun. ICBP mendominasi secara absolut ukuran skalanya.
-                    <br><span class="text-[#D4AF37]">(Arahkan mouse ke grafik untuk melihat data interaktif)</span>
-                </div>
-            </section>
-
-            <!-- SLIDE 8: INTERACTIVE CHART (Laba) -->
-            <section data-auto-animate data-background-color="#0B0F17">
-                <div class="flex items-center space-x-3 mb-6">
-                    <img data-id="logo-unpam" src="./assets/unpam.png" class="w-8 h-8" alt="Logo UNPAM">
-                    <h1 data-id="title-main" class="text-xl font-bold text-white m-0">Pertumbuhan Laba Bersih Absolut (2020 vs 2025)</h1>
-                </div>
-
-                <div class="glass-card" style="height: 400px; position: relative;">
-                    <canvas id="profitChart"></canvas>
-                </div>
-                <div class="mt-4 text-xs text-center text-gray-300 bg-slate-800 p-3 rounded-lg border border-slate-600">
-                    <i class="fa-solid fa-trophy text-yellow-400 mr-2"></i> Secara nilai buku Laba Bersih (EAT), dalam jangka panjang 5 tahun, kedua perusahaan sukses mencetak pertumbuhan positif (MYOR naik ~58%, ICBP naik ~24%).
-                </div>
-            </section>
-
-            <!-- SLIDE 9: KESIMPULAN -->
-            <section data-auto-animate data-background-color="#0B0F17">
-                <div class="flex flex-col items-center justify-center text-center h-full pt-10">
-                    <img data-id="logo-unpam" src="./assets/unpam.png" class="w-20 h-20 mb-4" alt="Logo UNPAM">
-                    <h1 data-id="title-main" class="text-5xl font-bold text-white mb-8">Kesimpulan: Pola Pertumbuhan</h1>
-
-                    <div class="grid grid-cols-2 gap-8 w-full">
-                        <div class="glass-card border-t-4 border-t-blue-500 hover:scale-105 transition-transform duration-500 cursor-pointer" onclick="shootConfetti()">
-                            <h2 class="text-4xl font-bold text-blue-400 mb-2">MYOR</h2>
-                            <h4 class="text-lg text-white mb-4">Fluktuatif Progresif</h4>
-                            <p class="text-sm text-gray-300">Tumbuh positif secara tren jangka panjang, dengan lonjakan laba signifikan di 2022-2023 dan sedikit kontraksi di 2021 & 2024.</p>
+                <div class="grid grid-cols-2 gap-6">
+                    <!-- Highlight 1: Penjualan MYOR -->
+                    <div class="superman-card">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="number-badge w-8 h-8 text-sm">1</span>
+                            <span class="text-xs font-bold text-blue-600 uppercase">MYOR Penjualan</span>
                         </div>
-                        <div class="glass-card border-t-4 border-t-emerald-500 hover:scale-105 transition-transform duration-500 cursor-pointer" onclick="shootConfetti()">
-                            <h2 class="text-4xl font-bold text-emerald-400 mb-2">ICBP</h2>
-                            <h4 class="text-lg text-white mb-4">Fluktuatif Progresif</h4>
-                            <p class="text-sm text-gray-300">Skala penjualan masif yang stabil, namun laba bersih tertekan cukup dalam di 2022 sebelum melesat kuat melampaui rekor di tahun 2023 ke atas.</p>
-                        </div>
+                        <h4 class="text-3xl font-extrabold text-[#2D1E15]">40.503 M</h4>
+                        <p class="text-xs text-gray-600 font-semibold mt-1">Tumbuh konsisten dari 24.476 M (2020) ke 40.503 M (2025) (+12.3% per tahun).</p>
                     </div>
-                    
-                    <p class="mt-10 text-xl text-[#D4AF37] font-bold tracking-widest uppercase">Terima Kasih</p>
-                    <p class="text-sm text-gray-400">Apakah ada pertanyaan terkait presentasi analisis pertumbuhan ini?</p>
+
+                    <!-- Highlight 2: Laba Bersih MYOR -->
+                    <div class="superman-card">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="number-badge w-8 h-8 text-sm">2</span>
+                            <span class="text-xs font-bold text-blue-600 uppercase">MYOR Laba Bersih (EAT)</span>
+                        </div>
+                        <h4 class="text-3xl font-extrabold text-blue-700">3.334 M</h4>
+                        <p class="text-xs text-gray-600 font-semibold mt-1">Sempat Anjlok 42.3% di 2021, lalu melonjak +62.7% di 2022 hingga mencapai 3.3 M.</p>
+                    </div>
+
+                    <!-- Highlight 3: Penjualan ICBP -->
+                    <div class="superman-card">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="number-badge w-8 h-8 text-sm">3</span>
+                            <span class="text-xs font-bold text-emerald-600 uppercase">ICBP Penjualan</span>
+                        </div>
+                        <h4 class="text-3xl font-extrabold text-[#2D1E15]">78.000 M</h4>
+                        <p class="text-xs text-gray-600 font-semibold mt-1">Skala masif raksasa FMCG, naik drastis dari 46.641 M (2020) ke 78.000 M (2025).</p>
+                    </div>
+
+                    <!-- Highlight 4: Laba Bersih ICBP -->
+                    <div class="superman-card">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="number-badge w-8 h-8 text-sm">4</span>
+                            <span class="text-xs font-bold text-emerald-600 uppercase">ICBP Laba Bersih (EAT)</span>
+                        </div>
+                        <h4 class="text-3xl font-extrabold text-emerald-700">8.200 M</h4>
+                        <p class="text-xs text-gray-600 font-semibold mt-1">Sempat tertekan tajam di 2022 (4.5M) sebelum meledak +52.4% di 2023 hingga 8.2 M.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 6: BAB IV - ANALISIS GRAFIS (Chart.js Interactive) -->
+            <section data-auto-animate data-background-color="#1C120C">
+                <div class="header-ribbon mb-4">
+                    <div class="flex items-center space-x-3">
+                        <span class="number-badge text-sm w-7 h-7">IV</span>
+                        <h2 data-id="title-main" class="text-lg font-bold text-[#E5C365] m-0">BAB IV: ANALISIS GRAFIS TREN PENJUALAN</h2>
+                    </div>
+                </div>
+
+                <div class="superman-card p-4" style="height: 380px;">
+                    <canvas id="salesChartSuper"></canvas>
+                </div>
+
+                <div class="mt-3 bg-[#2D1E15] p-3 rounded-xl border border-[#C59B27]/40 text-center text-xs text-[#E5C365]">
+                    <i class="fa-solid fa-chart-line mr-1"></i> Grafik menunjukkan Tren Penjualan <strong>Upward</strong> yang sangat kuat. Skala bisnis ICBP hampir 2x lipat dari skala bisnis MYOR.
+                </div>
+            </section>
+
+            <!-- SLIDE 7: BAB V - KESIMPULAN & REKOMENDASI -->
+            <section data-auto-animate data-background-color="#1C120C">
+                <div class="header-ribbon mb-6">
+                    <div class="flex items-center space-x-3">
+                        <span class="number-badge text-sm w-7 h-7">V</span>
+                        <h2 data-id="title-main" class="text-lg font-bold text-[#E5C365] m-0">BAB V: KESIMPULAN POLA PERTUMBUHAN</h2>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-8 mb-6">
+                    <div class="superman-card border-t-8 border-t-blue-600">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">MYOR (Mayora Indah)</h3>
+                        <div class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">POLA: FLUKTUATIF PROGRESIF</div>
+                        <p class="text-xs text-gray-700 leading-relaxed font-semibold">
+                            Tumbuh positif secara tren jangka panjang, dengan lonjakan laba signifikan pada 2022-2023 namun mengalami fluktuasi beban di 2021 & 2024.
+                        </p>
+                    </div>
+
+                    <div class="superman-card border-t-8 border-t-emerald-600">
+                        <h3 class="text-xl font-bold text-emerald-900 mb-2">ICBP (Indofood CBP)</h3>
+                        <div class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full inline-block mb-3">POLA: FLUKTUATIF PROGRESIF</div>
+                        <p class="text-xs text-gray-700 leading-relaxed font-semibold">
+                            Skala penjualan masif dan sangat dominan. Laba bersih sempat tertekan di 2022 akibat faktor makro, sebelum bangkit melesat kuat melampaui rekor di 2023-2025.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-6">
+                    <button onclick="shootConfetti()" class="bg-gradient-to-r from-[#C59B27] to-[#E5C365] text-black font-extrabold px-8 py-3 rounded-full shadow-lg hover:scale-105 transition duration-300">
+                        <i class="fa-solid fa-clapping-hands mr-2"></i> SELESAI & UCAPKAN TERIMA KASIH
+                    </button>
                 </div>
             </section>
 
         </div>
     </div>
 
+    <!-- Reveal.js & Confetti Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    
+
     <script>
         Reveal.initialize({
             hash: true,
             controls: true,
             progress: true,
             center: true,
-            transition: 'none', 
-            autoAnimateEasing: 'cubic-bezier(0.4, 0.0, 0.2, 1)', 
-            autoAnimateDuration: 1.2,
-            autoAnimateUnmatched: true 
+            transition: 'none',
+            autoAnimateEasing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+            autoAnimateDuration: 1.0,
+            autoAnimateUnmatched: true
         });
 
         function shootConfetti() {
-            var duration = 2000;
+            var duration = 3000;
             var end = Date.now() + duration;
             (function frame() {
-                confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#3b82f6', '#10b981', '#ffffff'] });
-                confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#3b82f6', '#10b981', '#ffffff'] });
+                confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#C59B27', '#ffffff', '#2D1E15'] });
+                confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#C59B27', '#ffffff', '#2D1E15'] });
                 if (Date.now() < end) { requestAnimationFrame(frame); }
             }());
         }
 
-        // Render Charts when slide is visible to trigger animation
         let salesChartInstance = null;
-        let profitChartInstance = null;
 
         Reveal.on('slidechanged', event => {
-            // Slide 7 is index 6
-            if(event.indexh === 6 && !salesChartInstance) {
-                const ctx = document.getElementById('salesChart').getContext('2d');
+            if(event.indexh === 5 && !salesChartInstance) {
+                const ctx = document.getElementById('salesChartSuper').getContext('2d');
                 salesChartInstance = new Chart(ctx, {
                     type: 'line',
                     data: {
                         labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
                         datasets: [
                             {
-                                label: 'ICBP (Indofood)',
+                                label: 'PT Indofood CBP Tbk (ICBP)',
                                 data: [46641, 56803, 64793, 67909, 72500, 78000],
                                 borderColor: '#10b981',
-                                backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                                backgroundColor: 'rgba(16, 185, 129, 0.15)',
                                 fill: true,
-                                tension: 0.4
+                                borderWidth: 3,
+                                pointBackgroundColor: '#10b981',
+                                pointRadius: 5
                             },
                             {
-                                label: 'MYOR (Mayora)',
+                                label: 'PT Mayora Indah Tbk (MYOR)',
                                 data: [24476, 27904, 30669, 31485, 36073, 40503],
-                                borderColor: '#3b82f6',
-                                backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                                borderColor: '#2563eb',
+                                backgroundColor: 'rgba(37, 99, 235, 0.15)',
                                 fill: true,
-                                tension: 0.4
+                                borderWidth: 3,
+                                pointBackgroundColor: '#2563eb',
+                                pointRadius: 5
                             }
                         ]
                     },
                     options: {
                         responsive: true, maintainAspectRatio: false,
-                        plugins: { legend: { labels: { color: 'white' } } },
+                        plugins: {
+                            legend: { labels: { color: '#2D1E15', font: { family: 'Plus Jakarta Sans', weight: 'bold' } } }
+                        },
                         scales: {
-                            y: { ticks: { color: 'gray' }, grid: { color: 'rgba(255,255,255,0.1)' } },
-                            x: { ticks: { color: 'gray' }, grid: { color: 'rgba(255,255,255,0.1)' } }
-                        }
-                    }
-                });
-            }
-
-            // Slide 8 is index 7
-            if(event.indexh === 7 && !profitChartInstance) {
-                const ctx = document.getElementById('profitChart').getContext('2d');
-                profitChartInstance = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['MYOR (2020)', 'MYOR (2025)', 'ICBP (2020)', 'ICBP (2025)'],
-                        datasets: [{
-                            label: 'Laba Bersih Absolut (Miliar)',
-                            data: [2098, 3334, 6586, 8200],
-                            backgroundColor: [
-                                'rgba(59, 130, 246, 0.5)', '#3b82f6',
-                                'rgba(16, 185, 129, 0.5)', '#10b981'
-                            ],
-                            borderColor: ['#3b82f6', '#3b82f6', '#10b981', '#10b981'],
-                            borderWidth: 1,
-                            borderRadius: 8
-                        }]
-                    },
-                    options: {
-                        indexAxis: 'y', // Horizontal bar chart
-                        responsive: true, maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            y: { ticks: { color: 'white', font: {size: 14} }, grid: { display: false } },
-                            x: { ticks: { color: 'gray' }, grid: { color: 'rgba(255,255,255,0.1)' } }
+                            y: { ticks: { color: '#2D1E15' }, grid: { color: '#E8D9C5' } },
+                            x: { ticks: { color: '#2D1E15' }, grid: { color: '#E8D9C5' } }
                         }
                     }
                 });
